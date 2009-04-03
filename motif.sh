@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd /var/www/motif_finder
+cd /var/www/f-motif
 java -cp . MotifFinderV5 $1 > ./output/$1.txt

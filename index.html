@@ -1,0 +1,23 @@
+<html><head>
+<title>F-Motif</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" language="javascript" src="js/jquery.js"></script>
+<script type="text/javascript" language="javascript" src="js/jquery.ajaxfileupload.js"></script>
+<script type="text/javascript" language="javascript" src="js/motif.js"></script>
+<head><body style="background-color: black;">
+<div style="background-color: black; color: white; float: left; padding: 15px;">
+<h2>F-Motif</h2>
+= STEP 1 =<p/>
+Upload File: <input type="file" id="fgdata_file" name="fgdata_file" value=""/> <!-- or <p/>
+Paste your data set here:<p/>
+<textarea name="fgdata" cols=35 rows=10></textarea> -->
+<p>= STEP 2 =</p>
+Click the submit button.
+<input type="button" onclick="upload()" value="Submit">
+</div>
+<div id="output" style="width: 600; color: white; float: right; padding: 15px;">
+  <div id="load"     style="width: 100%; padding: 15px;"></div>
+  <div id="weblogic" style="width: 100%;"></div>
+  <div id="motif"    style="width: 100%;"></div>
+</div>
+</body></html>

@@ -1,23 +1,85 @@
-<html><head>
-<title>F-Motif</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="text/javascript" language="javascript" src="js/jquery.js"></script>
-<script type="text/javascript" language="javascript" src="js/jquery.ajaxfileupload.js"></script>
-<script type="text/javascript" language="javascript" src="js/motif.js"></script>
-<head><body style="background-color: black;">
-<div style="background-color: black; color: white; float: left; padding: 15px;">
-<h2>F-Motif</h2>
-= STEP 1 =<p/>
-Upload File: <input type="file" id="fgdata_file" name="fgdata_file" value=""/> <!-- or <p/>
-Paste your data set here:<p/>
-<textarea name="fgdata" cols=35 rows=10></textarea> -->
-<p>= STEP 2 =</p>
-Click the submit button.
-<input type="button" onclick="upload()" value="Submit">
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+<head profile="http://gmpg.org/xfn/11">
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+  <title>F-Motif : Fast Motif Finder</title>
+  <style media="screen" type="text/css">
+    @import url( http://wp-themes.com/wp-content/themes/4colourslover/style.css );
+  </style>
+  <link href="http://wp-themes.com/wp-content/themes/4colourslover/green/style.css" rel="stylesheet" type="text/css" title="blu" />
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/ui-lightness/jquery-ui.css" type="text/css" media="screen" />
+  <!--[if lt IE 7]>
+  <script type="text/javascript" src="http://wp-themes.com/wp-content/themes/4colourslover/unitpngfix.js"></script>
+  <link href="http://wp-themes.com/wp-content/themes/4colourslover/iestyle.css" rel="stylesheet" type="text/css" />
+  <![endif]-->
+  <meta content="noindex,nofollow" name="robots"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script type="text/javascript" language="javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" language="javascript" src="js/jquery.ajaxfileupload.js"></script>
+  <script type="text/javascript" language="javascript" src="js/motif.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/jquery-ui.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+  $(function() {
+    $("#tabs").tabs();
+  });
+  </script>
+</head><body>
+<div id="wrap">
+  <div id="header">
+    <div id="header_center">
+      <h2>Fast Motif Finder</h2>
+      <h1>F-Motif</h1>
+    </div>
+    <div id="navigation">
+      <ul><li class="page_item page-item-2"><a href="#" title="About">About</a></li></ul>
+    </div>
+  </div>
+  <div id="container">
+    <div id="content">
+      <div class="entry">
+	<div id="tabs">
+	  <ul>
+	    <li><a href="#tabs-1">Input</a></li>
+	    <li><a href="#tabs-2">Output - Weblogo</a></li>
+	    <li><a href="#tabs-3">Output - Motif Results</a></li>
+	    <li><a href="#tabs-4">Output - Raw Results</a></li>
+	  </ul>
+	  <div id="tabs-1">
+	    <table cellpadding="10" cellspacing="10">
+	      <tr><td colspan=2><h2>Please fill following fields:</h2></td></tr>
+	      <tr><td colspan=2><b> 1. Choose Forground File: </b></td></tr>
+	      <tr><td>1.1 Upload a text file:</td><td><input type="file" id="fgdata_file" name="fgdata_file" value=""/></td></tr>
+	      <tr><td>1.2 select sample file:</td><td></td></tr>
+	      <tr><td><b> 2. Choose Background Type:</b></td><td>
+		<select id="backgound" name="background">
+		  <option selected value="All">All - All Species</option>
+		  <option          value="Homo">Homo - Human only</option>
+		</select></td></tr>
+	      <tr><td><b> 3. Define Frequecny:	  </b></td><td><input id="freq"  name="freq"  value="50"/></td></tr>
+	      <tr><td><b> 4. Define Match Number: </b></td><td><input id="match" name="match" value="20"/></td></tr>
+	      <tr><td><h2>Then click the submit button.</h2></td><td><input type="button" onclick="upload()" value="Submit"></td></tr>
+	    </table>
+	  </div>
+	  <div id="tabs-2">
+	    <div id="weblogo"></div>
+	  </div>
+	  <div id="tabs-3">
+	  </div>
+	  <div id="tabs-4">
+	    <div id="motif-raw"></div>
+	  </div>
+	</div>
+      </div>
+    </div>
+    <div id="sidebar">
+      <h2>Process Status</h2>
+      <ul id='status'></ul>
+      <div id="load"></div>
+    </div>
+  </div>
 </div>
-<div id="output" style="width: 600; color: white; float: right; padding: 15px;">
-  <div id="load"     style="width: 100%; padding: 15px;"></div>
-  <div id="weblogic" style="width: 100%;"></div>
-  <div id="motif"    style="width: 100%;"></div>
+<div id="footer">
+  <div id="footer_inner">
+    <p>4ColoursLover Theme by <a href="http://www.potamocheri.eu/blog">Edo Grandinetti</a>.</p>
+  </div>    
 </div>
 </body></html>

@@ -1,8 +1,9 @@
 function upload()
 {
   $('#load').empty();
-  $('#weblogic').empty();
-  $('#motif').empty();
+  $('#weblogo').empty();
+  $('#motif-raw').empty();
+  $('#status').empty();
 
   $.ajaxFileUpload({
     url:'php/upload.php',
@@ -16,6 +17,7 @@ function upload()
 	if(data.error != '') { 
 	  alert(data.error); 
 	} else {
+	  $('#status').append("<li><b>File uploaded!</b></li>");
 	  process(data.msg);
 	}
       }
@@ -29,26 +31,31 @@ function upload()
 function process(input)
 {
   $('#load').append("<center><img src='image/loading.gif'><br/><br/>"
-		  + "Your Request is still in background processing ....<br/></center>");
+		  + "<b>Your Request is still <br/>in background processing ....<br/></b></center>");
   $.ajax({
     url:          "php/weblogic.php",
     type:         "POST",
     data:         "input=" + input,
     success:      function(msg)
     {
-      $('#weblogic').append("<img src='output_image/" + msg + "'>");
+      $('#weblogo').append("<img src='output_image/" + msg + "'>");
+      $('#status').append("<li><b>WebLogo generated!</b></li>");
     }
   });
+
+  var background = $('#background').val();
+  var freq = $('#freq').val();
+  var match = $('#match').val();
 
   $.ajax({
     url:          "php/motif.php",
     type:         "POST",
-    data:         "input=" + input,
+    data:         "input=" + input + "&background=" + background + "&freq=" + freq + "&match=" + match ,
     success:      function(msg)
     {
-      $('#motif').append("<iframe src='output/" + msg + "' width='100%' height='400'/>");
-      $('#motif').css('background-color','white');
-      $('#load').remove();
+      $('#motif-raw').append("<iframe src='output/" + msg + "' width='100%' height='400'/>");
+      $('#status').append("<li><b>Motif Raw Results generated!</b></li>");
+      $('#load').empty();
     }
   });
 }

@@ -18,8 +18,10 @@ public class MotifFinderV5 {
     Vector UsedSequenceSet;
     Vector UsedbackgroundSet;
        
-    int MinMatchNum = 20;
-    int MinMatchNum2 = 20;
+    static private int MinMatchNum;
+    static private int MinMatchNum2;
+    static private int Frequecny;
+    static private String Background;
     
     char[] aaMap = {'A', 'R', 'N', 'D', 'C', 'Q', 'E', 'G', 'H',
             'I', 'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y','V','X'};
@@ -44,7 +46,14 @@ public class MotifFinderV5 {
     public static void main(String args[]) {
 	if(args.length > 0) {
 	  PostiveFinName = args[0];
+	  Background = args[1];
+	  Frequecny = Integer.parseInt(args[2] ,10); 
+	  MinMatchNum  = Integer.parseInt(args[3] ,10);
+	  MinMatchNum2 = Integer.parseInt(args[3] ,10);
+	} else {
+	  System.out.print("java MotifFinderV5 INPUT_FILENAME [All|Homo] FREQUENCY MATCH_NUMBER");
 	}
+
     	querydata data = new querydata();
   /*
     	int input = -1 ;
@@ -109,7 +118,7 @@ public class MotifFinderV5 {
 				data.kinease = data.kinasesname[j];
 				
 				MotifFinderV5 SeqDatapool = new MotifFinderV5(data);
-				SeqDatapool.start(50);
+				SeqDatapool.start(Frequecny);
 				
 				//SeqDatapool.PrintMotif();
 		
@@ -184,12 +193,9 @@ public class MotifFinderV5 {
                if (Data.species.equals("ALL")){
                	species = "ALL";
                }
-	       if( PostiveFinName == "" ) {		       
-		  PostiveFinName =  "Seq_positive_" + species + "_" + kinases + "_" + code + "_" +windows_size +"_"+Data.DATABASE_TABLE;
-	       } 
                //String PostiveFinName =  "nbt1146-S6";
                
-                String FullPostiveFinName = "./input/"+PostiveFinName+ ".txt";
+                String FullPostiveFinName = "./input/"+PostiveFinName;
                 //IPI_Human_backgroundset_S_13.txt//"./Dataset/nbt1146-S6.txt"
                //BufferedReader PostiveFin = new BufferedReader(new FileReader("./Dataset/nbt1146-S6.txt"));	
         	   //BufferedReader PostiveFin = new BufferedReader(new FileReader("./PTMDATA/Seq_positive_PKA_S_13.txt"));
@@ -199,14 +205,16 @@ public class MotifFinderV5 {
                //"./Dataset/Seq_positive_" + species + "_" + Data.kinease + "_" +QueryCodeName + "_" + windows_size +"_"+Data.DATABASE_TABLE+".txt"
                
                BufferedReader PostiveFin = new BufferedReader(new FileReader(FullPostiveFinName));
-                 
-               BufferedReader backgroundFin = new BufferedReader(new
+               
+	       BufferedReader backgroundFin;
+	       if ( Background == "All" )
+	       {
+		  backgroundFin = new BufferedReader(new
                        FileReader("./PTMDATA/ELM_1208_backgroundset_S_13.txt"));
-               /*
-               BufferedReader backgroundFin = new BufferedReader(new
-                        FileReader("./PTMDATA/Pssm_backgroundset_" + code + "_" +
-                                   windows_size + ".txt"));
-              */
+	       } else {
+		  backgroundFin = new BufferedReader(new
+                        FileReader("./PTMDATA/ELM_1208_Homo sapiens_backgroundset_S_13.txt"));
+	       }
                  PrintWriter GroupNumOut = new PrintWriter(new BufferedWriter(
                 		new FileWriter("./output/" +PostiveFinName+"_MotifLog.csv")));
                  PrintWriter FinalMotifList = new PrintWriter(new BufferedWriter(

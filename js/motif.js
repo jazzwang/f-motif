@@ -51,8 +51,6 @@ function upload()
 
 function process(input)
 {
-  init();
-
   $('#load').append("<center><img src='image/loading.gif'><br/><br/>"
 		  + "<b><font color='#ff0000'>Your Request is still processing<br/>in background ....<br/></font></b></center>");
   $.ajax({

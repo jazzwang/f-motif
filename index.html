@@ -1,27 +1,22 @@
 <html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
 <head profile="http://gmpg.org/xfn/11">
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+  <meta content="noindex,nofollow" name="robots"/>
   <title>F-Motif : Fast Motif Finder</title>
   <style media="screen" type="text/css">
-    @import url( http://wp-themes.com/wp-content/themes/4colourslover/style.css );
+    @import url( css/4colourslover/style.css );
   </style>
-  <link href="http://wp-themes.com/wp-content/themes/4colourslover/green/style.css" rel="stylesheet" type="text/css" title="blu" />
-  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/ui-lightness/jquery-ui.css" type="text/css" media="screen" />
+  <link href="css/4colourslover/green/style.css" rel="stylesheet" type="text/css" title="blu" />
+  <link href="css/jquery-ui.css"                 rel="stylesheet" type="text/css" media="screen" />
+  <link href="css/motif.css"                     rel="stylesheet" type="text/css" />
   <!--[if lt IE 7]>
-  <script type="text/javascript" src="http://wp-themes.com/wp-content/themes/4colourslover/unitpngfix.js"></script>
-  <link href="http://wp-themes.com/wp-content/themes/4colourslover/iestyle.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="css/themes/4colourslover/unitpngfix.js"></script>
+  <link href="css/4colourslover/iestyle.css" rel="stylesheet" type="text/css" />
   <![endif]-->
-  <meta content="noindex,nofollow" name="robots"/>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <script type="text/javascript" language="javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" language="javascript" src="js/jquery-ui.min.js"></script>
   <script type="text/javascript" language="javascript" src="js/jquery.ajaxfileupload.js"></script>
   <script type="text/javascript" language="javascript" src="js/motif.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/jquery-ui.min.js" type="text/javascript"></script>
-  <script type="text/javascript">
-  $(function() {
-    $("#tabs").tabs();
-  });
-  </script>
 </head><body>
 <div id="wrap">
   <div id="header">
@@ -39,19 +34,22 @@
 	<div id="tabs">
 	  <ul>
 	    <li><a href="#tabs-1">Input</a></li>
-	    <li><a href="#tabs-2">Output - Weblogo</a></li>
-	    <li><a href="#tabs-3">Output - Motif Results</a></li>
-	    <li><a href="#tabs-4">Output - Raw Results</a></li>
+	    <li><a href="#tabs-2">Weblogo</a></li>
+	    <li><a href="#tabs-3">Total Motif</a></li>
+	    <li><a href="#tabs-4">Motif Table</a></li>
+	    <li><a href="#tabs-5">Raw Output</a></li>
 	  </ul>
 	  <div id="tabs-1">
-	    <table cellpadding="10" cellspacing="10">
+	    <table cellpadding="15" cellspacing="15">
 	      <tr><td colspan=2><h2>Please fill following fields:</h2></td></tr>
 	      <tr><td colspan=2><b> 1. Choose Forground File: </b></td></tr>
-	      <tr><td>1.1 Upload a text file:</td><td><input type="file" id="fgdata_file" name="fgdata_file" value=""/></td></tr>
-	      <tr><td>1.2 select sample file:</td><td></td></tr>
+	      <tr><td>1.1 Upload a text file:  </td><td><input type="file" id="fgdata_file" name="fgdata_file" value=""/></td></tr>
+	      <tr><td>1.2 Select a sample file:</td><td>
+		<select id="sample" name="sample">
+		</select></td></tr>
 	      <tr><td><b> 2. Choose Background Type:</b></td><td>
 		<select id="backgound" name="background">
-		  <option selected value="All">All - All Species</option>
+		  <option selected value="All" >All - All Species</option>
 		  <option          value="Homo">Homo - Human only</option>
 		</select></td></tr>
 	      <tr><td><b> 3. Define Frequecny:	  </b></td><td><input id="freq"  name="freq"  value="50"/></td></tr>
@@ -63,8 +61,12 @@
 	    <div id="weblogo"></div>
 	  </div>
 	  <div id="tabs-3">
+	    <table id="total-motif" border="1"></table>
 	  </div>
 	  <div id="tabs-4">
+	    <table id="motif-table" border="1"></table>
+	  </div>
+	  <div id="tabs-5">
 	    <div id="motif-raw"></div>
 	  </div>
 	</div>
@@ -79,7 +81,7 @@
 </div>
 <div id="footer">
   <div id="footer_inner">
-    <p>4ColoursLover Theme by <a href="http://www.potamocheri.eu/blog">Edo Grandinetti</a>.</p>
+    <p>4ColoursLover Theme by <a href="http://www.potamocheri.eu/blog">Edo Grandinetti</a>. Power by Grid Technology Division, <a href="http://www.nchc.org.tw">NCHC</a>, <a href="http://www.narl.org.tw">NARL</a>, Taiwan.</p>
   </div>    
 </div>
 </body></html>

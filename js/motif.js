@@ -1,5 +1,6 @@
 $(function() {
   $("#tabs").tabs();
+  init();
 });
 
 function init()
@@ -19,25 +20,31 @@ function upload()
 {
   init();
 
-  $.ajaxFileUpload({
-    url:'php/upload.php',
-    secureuri:false,
-    fileElementId:'fgdata_file',
-    dataType: 'json',
-    success: function (data, status)
-    {
-      if(typeof(data.error) != 'undefined')
+  if($('#sample').val() == "" && $('#fgdata_file').val() == "") { alert("please select a forground file or choose a sample file!!"); return; }
+
+  if($('#fgdata_file').val() != "") {
+    $.ajaxFileUpload({
+      url:'php/upload.php',
+      secureuri:false,
+      fileElementId:'fgdata_file',
+      dataType: 'json',
+      success: function (data, status)
       {
-	if(data.error != '') { 
-	  alert(data.error); 
-	} else {
-	  $('#status').append("<li><b>File uploaded!</b></li>");
-	  process(data.msg);
+	if(typeof(data.error) != 'undefined')
+	{
+	  if(data.error != '') { 
+	    alert(data.error); 
+	  } else {
+	    $('#status').append("<li><b>File uploaded!</b></li>");
+	    process(data.msg);
+	  }
 	}
-      }
-    },
-    error: function (data, status, e) { alert(e); }
-  });
+      },
+      error: function (data, status, e) { alert(e); }
+    });
+  } else {
+    process($('#sample').val());
+  }
 
   return false;
 }

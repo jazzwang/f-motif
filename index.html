@@ -40,16 +40,27 @@
 	    <li><a href="#tabs-5">Raw Output</a></li>
 	  </ul>
 	  <div id="tabs-1">
-	    <table cellpadding="15" cellspacing="15">
+	    <table cellpadding="12" cellspacing="12">
 	      <tr><td colspan=2><h2>Please fill following fields:</h2></td></tr>
 	      <tr><td colspan=2><b> 1. Choose Forground File: </b></td></tr>
 	      <tr><td>1.1 Upload a text file:  </td><td><input type="file" id="fgdata_file" name="fgdata_file" value=""/></td></tr>
 	      <tr><td>1.2 Select a sample file:</td><td>
 		<select id="sample" name="sample">
+		  <option></option>
+		  <option value="Seq_positive_ALL_CDK_S_13_phosphoELM_1208.txt">CDK - ALL</option>
+		  <option value="Seq_positive_ALL_CK2_S_13_phosphoELM_1208.txt">CK2 - ALL</option>
+		  <option value="Seq_positive_ALL_PKA_S_13_phosphoELM_1208.txt">PKA - ALL</option>
+		  <option value="Seq_positive_ALL_PKC_S_13_phosphoELM_1208.txt">PKC - ALL</option>
+		  <option value="Seq_positive_ALL_4 Kinases_S_13_phosphoELM_1208.txt">4 Kinases - ALL</option>
+		  <option value="Seq_positive_Homo sapiens_CDK_S_13_phosphoELM_1208.txt">CDK - Homo</option>
+		  <option value="Seq_positive_Homo sapiens_CK2_S_13_phosphoELM_1208.txt">CK2 - Homo</option>
+		  <option value="Seq_positive_Homo sapiens_PKA_S_13_phosphoELM_1208.txt">PKA - Homo</option>
+		  <option value="Seq_positive_Homo sapiens_PKC_S_13_phosphoELM_1208.txt">PKC - Homo</option>
+		  <option value="Seq_positive_Homo sapiens_4 Kinases_S_13_phosphoELM_1208.txt">4 Kinases - Homo</option>
 		</select></td></tr>
 	      <tr><td><b> 2. Choose Background Type:</b></td><td>
-		<select id="backgound" name="background">
-		  <option selected value="All" >All - All Species</option>
+		<select id="background" name="background">
+		  <option selected value="All">All - All Species</option>
 		  <option          value="Homo">Homo - Human only</option>
 		</select></td></tr>
 	      <tr><td><b> 3. Define Frequecny:	  </b></td><td><input id="freq"  name="freq"  value="50"/></td></tr>

@@ -1,5 +1,5 @@
 <?
-  $input = substr($_POST["input"],0,12);
+  $input = str_replace(".txt","",$_POST["input"]);
   $background = $_POST["background"];
   $freq = $_POST["freq"];
   $match = $_POST["match"];

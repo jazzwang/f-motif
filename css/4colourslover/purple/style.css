@@ -1,0 +1,156 @@
+/* PURPLE CSS */
+
+
+/* MAIN */
+
+
+body {
+	background: url(images/bg.jpg) repeat-x;
+}
+
+a, a:visited {
+	color: #530160;
+}
+
+a:active, a:hover {
+	color: #910da6;
+}
+
+ul li {
+	background: url(images/li.png) no-repeat 0 1px;
+	padding: 0 0 3px 18px;
+	margin: 0;
+}
+
+/* HEADER */
+
+#header {
+	background: url(images/header.jpg) no-repeat;
+}
+
+#navigation ul li a:hover {
+	background: url(images/menuhover.png) repeat-x;
+}
+
+#topsearchform .send input {
+	background: url(images/searchbutton.png) no-repeat 0 0;
+}
+/* POST */
+
+
+.entry h1 a {
+	color: #530160;
+}
+
+.entry h1 a:hover {
+	color: #910da6;
+}
+
+.metapost ul li a:hover {
+	color: #530160;
+}
+
+li.commentlink {
+	background: url(images/comments.png) no-repeat left top;
+	padding: 0 0 5px 21px;
+	margin: 0 0 2px;
+}
+
+li.more {
+	background: url(images/more.png) no-repeat left top;
+	padding: 0px 0 5px 21px;
+	margin: 0;
+}
+
+li.date {
+	background: url(images/date.png) no-repeat left top;
+	padding: 0 0 5px 21px;
+	margin: 0 0 2px;
+
+}
+
+li.author {
+	background: url(images/author.png) no-repeat left top;
+	padding: 0px 0 6px 21px;
+	margin: 0 0 2px;
+
+}
+
+li.category {
+	padding: 0px 0 5px 21px;
+	background: url(images/category.png) no-repeat left top;
+	margin: 0 0 2px;
+
+}
+
+li.tag {
+	padding: 0px 0 5px 21px;
+	background: url(images/tag.png) no-repeat left top;
+	margin: 0 0 2px;
+
+}
+
+li.trackback {
+	padding: 0px 0 5px 21px;
+	background: url(images/trackback.png) no-repeat left top;
+	margin: 0 0 2px;
+
+}
+li.postfeed {
+	padding: 0px 0 5px 21px;
+	background: url(images/postfeed.png) no-repeat left top;
+	margin: 0;
+}
+
+/* SIDEBAR */
+
+#sidebar ul li {
+	background: url(images/li.png) no-repeat 0 1px;
+	padding: 0 0 3px 18px;
+}
+
+#sidebar ul li a:hover {
+	color: #530160;
+}
+
+#sidebar ul li ul.children li a:hover {
+	color: #530160;
+}
+
+#sidebar ul.widget li ul li {
+	background: url(images/li.png) no-repeat 0 1px;
+	padding: 0 0 3px 18px;
+}
+/* COMMENTS */
+
+#comments a {
+	color: #910da6;
+}
+
+#comments a:hover {
+	color: #530160;
+}
+
+#respond input {
+	background-color: #910da6;
+	border: 1px solid #530160;
+}
+
+#respond textarea {
+	background-color: #910da6;
+	border: 1px solid #530160;
+}
+
+#bt input {
+	background: url(images/sendbutton.png) no-repeat;
+	border: none;
+}
+
+
+#rightnav a {
+	background: url(images/rightnav.gif) no-repeat right;
+}
+
+#leftnav a {
+	background: url(images/leftnav.gif) no-repeat left;
+}

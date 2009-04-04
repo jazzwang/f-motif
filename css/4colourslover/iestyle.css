@@ -1,0 +1,99 @@
+/* IE 6 STYLESHEET */
+
+.entry {
+	width: 630px;
+	padding: 0;
+	margin: 0 0 20px 10px;
+	float: left;
+}
+
+.contentpost {
+	height: 140px;
+}
+
+.excerpt {
+	height: 120px;
+}
+
+#content {
+	width: 660px;
+	margin: 0;
+	float: left;
+	text-align: left;
+	padding: 30px 0;
+	background-color: transparent;
+}
+
+.metapost ul {
+	background: url(images/metapostbgcenter.png) repeat-y 0 0;
+	margin: -2px 0 0;
+	padding: 0 4px;
+}
+
+#respond {
+	width: 630px;
+	margin: 10px 0 0;
+	padding: 0;
+	float: left;
+}
+
+#respond input {
+	padding-bottom: 8px;
+}
+.textspace {	
+	height: 145px;
+}
+
+#comments {
+	width: 630px;
+	float: left;
+	padding: 0;
+	margin: 20px 0 0;
+	font-size: 12px;
+}
+
+#comments h4 {
+	color: #777;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+ul#commentlist {
+	margin: 10px 0 0;
+	padding: 0;
+	background-color: transparent;
+}
+
+ul#commentlist li {
+	margin: 0 0 15px;
+	padding: 0;
+	color: #555;
+	float: left;
+	border-bottom: 1px solid #777;
+}
+
+ul#commentlist li.guest {
+	background: url(images/bgcomment.jpg) repeat-x left bottom;
+}
+
+ul#commentlist li.commentauthor {
+	background: url(images/bgcommentalt.jpg) repeat-x left bottom;
+}
+
+.infospace {
+	font-size: 10px;
+	margin: 0 0 5px;
+	width: 120px;
+	padding: 0 0 0 5px;
+	color: #777;
+	float: left;
+}
+
+.textspace {
+	float: left;
+	width: 480px;
+	padding: 0 10px;
+	margin: 0 0 5px;
+	border-left: 1px dashed #888;
+	height: 145px;
+}

@@ -1,5 +1,6 @@
 <?
-  $input = fopen($_SERVER['DOCUMENT_ROOT'] . "/f-motif/output/" . $_POST["input"],"r");
+  $path  = str_replace("/php","",getcwd());
+  $input = fopen($path . "/output/" . $_POST["input"],"r");
   $state = 0;
   if($input)
   {

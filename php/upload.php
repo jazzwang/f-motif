@@ -36,7 +36,8 @@
   } else {
     $file_temp = $_FILES[$fileElementName]['tmp_name'];
     $file_name = chop(`date +"%y%m%d%H%M%S.txt"`);
-    $file_path = $_SERVER['DOCUMENT_ROOT']."/f-motif/input/";
+    $path  = str_replace("/php","",getcwd());
+    $file_path = $path . "/input/";
     if(!file_exists($file_path."/".$file_name)) {
       //complete upload
       $filestatus = move_uploaded_file($file_temp,$file_path."/".$file_name);

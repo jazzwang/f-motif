@@ -59,6 +59,7 @@ function process(input)
     data:         "input=" + input,
     success:      function(msg)
     {
+      $('#weblogo').append("<p>[[ <a href='output_image/" + msg + "' target='_blank'>Download weblogo result</a> ]]</p>");
       $('#weblogo').append("<img src='output_image/" + msg + "'>");
       $('#status').append("<li><b>WebLogo generated!</b></li>");
     }
@@ -74,6 +75,7 @@ function process(input)
     data:         "input=" + input + "&background=" + background + "&freq=" + freq + "&match=" + match ,
     success:      function(msg)
     {
+      $('#motif-raw').append("<p>[[ <a href='output/" + msg + "' target='_blank'>Download F-Motif raw output</a> ]]</p>");
       $('#motif-raw').append("<iframe src='output/" + msg + "' width='100%' height='300'/>");
       $('#status').append("<li><b>Motif Raw Results generated!</b></li>");
       analysis(msg);

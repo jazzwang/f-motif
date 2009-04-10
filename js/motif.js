@@ -13,7 +13,7 @@ function init()
   $('#status').empty();
 
   $('#motif-table').append("<tr><th>Motif Pattern</th><th>Match / Total</th><th>PFM hit frequency</th><th>Background Match</th><th>Motif score</th></tr>");
-  $('#total-motif').append("<tr><th>Motif Pattern</th><th>Match / Total</th><th></th></tr>");
+  $('#total-motif').append("<tr><th>Motif Pattern</th><th>Motif score</th><th>Forground Match</th><th>Matched</th></tr>");
 }
 
 function upload()

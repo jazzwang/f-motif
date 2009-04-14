@@ -8,7 +8,7 @@ import java.io.BufferedWriter;
  * 注意輸出FRAME有沒有平移
  *
  */
- public  class pfmencoding {
+ public  class pfmencoding extends Encoding{
      public querydata Data;
      public double Pssm[][];
 
@@ -63,10 +63,21 @@ import java.io.BufferedWriter;
     }
     public pfmencoding(querydata data,Vector seqin,Vector seqin2) {
         Data = data;
+        
+        /*
        PositionFrequenceMatrix pwm = new PositionFrequenceMatrix(data,seqin);
        PositionFrequenceMatrix bwm = new PositionFrequenceMatrix(data,seqin2);
        pwm.start2();
        bwm.start2();
+       */
+         
+       PositionProbabilityMatrix pwm = new PositionProbabilityMatrix(data,seqin);
+       PositionProbabilityMatrix bwm = new PositionProbabilityMatrix(data,seqin2);
+       pwm.SetRelativeFlag();
+       pwm.start2();
+       bwm.SetRelativeFlag();
+       bwm.start2();
+        
        Pssm = pwm.wm ;
        for (int i = 0 ; i < 20;i++){
 

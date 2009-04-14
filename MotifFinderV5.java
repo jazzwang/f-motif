@@ -21,7 +21,10 @@ public class MotifFinderV5 {
     static private int MinMatchNum;
     static private int MinMatchNum2;
     static private int Frequecny;
+    static private double posT;
+    static private double Mvalue;
     static private String Background;
+    static private String EncodingMethod;
     
     char[] aaMap = {'A', 'R', 'N', 'D', 'C', 'Q', 'E', 'G', 'H',
             'I', 'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y','V','X'};
@@ -47,11 +50,14 @@ public class MotifFinderV5 {
 	if(args.length > 0) {
 	  PostiveFinName = args[0];
 	  Background = args[1];
-	  Frequecny = Integer.parseInt(args[2] ,10); 
-	  MinMatchNum  = Integer.parseInt(args[3] ,10);
-	  MinMatchNum2 = Integer.parseInt(args[3] ,10);
+	  EncodingMethod = args[2];
+	  Frequecny = Integer.parseInt(args[3] ,10); 
+	  MinMatchNum  = Integer.parseInt(args[4] ,10);
+	  MinMatchNum2 = Integer.parseInt(args[4] ,10);
+	  posT = Double.parseDouble(args[5] ,10);
+	  Mvalue = 30;
 	} else {
-	  System.out.print("java MotifFinderV5 INPUT_FILENAME [All|Homo] FREQUENCY MATCH_NUMBER");
+	  System.out.print("java MotifFinderV5 INPUT_FILENAME [All|Homo] [[PFM|PWM|BIN]] FREQUENCY MATCH_NUMBER Threshold_T");
 	}
 
     	querydata data = new querydata();
@@ -209,12 +215,12 @@ public class MotifFinderV5 {
 	       BufferedReader backgroundFin;
 	       if ( Background == "All" )
 	       {
-		  backgroundFin = new BufferedReader(new
+		  		backgroundFin = new BufferedReader(new
                        FileReader("./PTMDATA/ELM_1208_backgroundset_S_13.txt"));
 	       } else {
-		  backgroundFin = new BufferedReader(new
+		  		backgroundFin = new BufferedReader(new
                         FileReader("./PTMDATA/ELM_1208_Homo sapiens_backgroundset_S_13.txt"));
-	       }
+	      	}
                  PrintWriter GroupNumOut = new PrintWriter(new BufferedWriter(
                 		new FileWriter("./output/" +PostiveFinName+"_MotifLog.csv")));
                  PrintWriter FinalMotifList = new PrintWriter(new BufferedWriter(
@@ -238,13 +244,24 @@ public class MotifFinderV5 {
                     backgroundSet.addElement(backgroundFin.readLine());
                 }
                 backgroundFin.close();
-
-                pfmencoding pssmencoder = new pfmencoding(Data, SequenceSet, backgroundSet);
-                //ppmencoding pssmencoder = new ppmencoding(Data, SequenceSet, backgroundSet);
+								Encoding pssmencoder =null;
+								if (EncodingMethod.equals("PFM")){
+									pssmencoder = new pfmencoding(Data, SequenceSet, backgroundSet);
+								}else if (EncodingMethod.equals("PWM")){
+									pssmencoder = new pssmencoding(Data, SequenceSet);
+								}else if (EncodingMethod.equals("BIN")){
+									pssmencoder = new binaryencoding();
+								}else{
+									pssmencoder = new pfmencoding(Data, SequenceSet, backgroundSet);
+								}
+                
+                
+                
+                
                 ppmencoding ppmencoder = new ppmencoding(Data, SequenceSet, backgroundSet);
                 //backgroundSet.clear();
-                Map<String, Integer> MotifTimes =   new HashMap<String, Integer>();
-                Map<String, Integer> MotifMatchTimes =   new HashMap<String, Integer>();
+                Map<String, Integer> MotifTimes =  new HashMap<String, Integer>();
+                Map<String, Integer> MotifMatchTimes =  new HashMap<String, Integer>();
                 Set<String> TotalMotifs = new HashSet<String>();
                 String MaxScoreMotif = null;
                 double MaxMotifScore = 0.0;
@@ -276,7 +293,7 @@ public class MotifFinderV5 {
 		                }
 		           
 		                                
-		                int clusterNum = UsedSequenceSet.size()/30 + 2;
+		                int clusterNum = (int)(UsedSequenceSet.size()/Mvalue) +2;
 		                System.out.println(UsedSequenceSet.size());
 		                KMeans KCluster = new KMeans(ClusterData,clusterNum);
 		                
@@ -292,7 +309,7 @@ public class MotifFinderV5 {
 		                int GoodMotifSize = 0;
 		                
 		                for (int i = 0 ; i < clusterNum; i++) {
-		                	REtemplate[i] = FindMotif (UsedSequenceSet,KCluster.kcluster[i],0.4-MatchRuleNum.size()*0.01,MotifNumbertemp[i]);
+		                	REtemplate[i] = FindMotif (UsedSequenceSet,KCluster.kcluster[i],posT-MatchRuleNum.size()*0.01,MotifNumbertemp[i]);
 		                	MotifNumber[i] = MotifNumbertemp[i][0];
 		                	if (MotifNumber[i]>=2){
 		                		Iterator list = SequenceSet.iterator();	                		
@@ -699,6 +716,7 @@ public class MotifFinderV5 {
 		int i = 0;
 		int Max = 0;
 		double Threshold = cutoff*size;
+		if (cutoff <= 0){Threshold = 0;};
 		while (list.hasNext()){
 			temp = Set.elementAt((Integer)list.next()).toString();//
 			

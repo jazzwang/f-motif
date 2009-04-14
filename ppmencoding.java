@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  * 注意輸出FRAME有沒有平移
  *
  */
- public  class ppmencoding {
+ public  class ppmencoding extends Encoding{
      querydata Data;
     public double Pssm[][];
     public BigDecimal binomial[][];
@@ -89,7 +89,7 @@ import java.math.BigDecimal;
        char[] aaMap = {'A', 'R', 'N', 'D', 'C', 'Q', 'E', 'G', 'H',
                'I', 'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y',
                'V', 'X'};
-
+       double pssmtemp = 0.0;
        Pssm = new double[pwm.wm.length][pwm.wm[0].length];
        Arith math = new Arith();
        int startPOS = 0;
@@ -107,9 +107,14 @@ import java.math.BigDecimal;
                         //BigDecimal temp2 = new BigDecimal(Math.pow(bwm.wm[i][j],k)*Math.pow(1-bwm.wm[i][j],N-k));
                          //temp1 = temp1.add(binomial[N][k].multiply(P.pow(k).multiply(NotP.pow(N-k))));
                       //Pssm[i][j] += (binomial[N][k].multiply(temp2)).doubleValue();
-                      //Pssm[i][j] += math.round(BI[N][k] * Math.pow(bwm.wm[i][j],k) * Math.pow((1.0 - bwm.wm[i][j]),N-k),18);
-                	   Pssm[i][j] +=   Math.exp((BI[N]-BI[k]-BI[(N-k)]+k*Math.log(bwm.wm[i][j])+(N-k)*Math.log(1.0 - bwm.wm[i][j])));
-
+                      
+                	   //Pssm[i][j] += math.round(BI[N][k] * Math.pow(bwm.wm[i][j],k) * Math.pow((1.0 - bwm.wm[i][j]),N-k),18);
+                	   pssmtemp = Math.exp((BI[N]-BI[k]-BI[(N-k)]+k*Math.log(bwm.wm[i][j])+(N-k)*Math.log(1.0 - bwm.wm[i][j])));
+                	   if (Double.isNaN(pssmtemp)){
+                		   pssmtemp = 0;
+                	   }
+                	   Pssm[i][j] +=  pssmtemp;
+                	   
                   }
 
                }

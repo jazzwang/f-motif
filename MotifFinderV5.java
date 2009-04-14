@@ -54,7 +54,7 @@ public class MotifFinderV5 {
 	  Frequecny = Integer.parseInt(args[3] ,10); 
 	  MinMatchNum  = Integer.parseInt(args[4] ,10);
 	  MinMatchNum2 = Integer.parseInt(args[4] ,10);
-	  posT = Double.parseDouble(args[5] ,10);
+	  posT = Double.parseDouble(args[5]);
 	  Mvalue = 30;
 	} else {
 	  System.out.print("java MotifFinderV5 INPUT_FILENAME [All|Homo] [[PFM|PWM|BIN]] FREQUENCY MATCH_NUMBER Threshold_T");

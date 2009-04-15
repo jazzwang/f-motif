@@ -66,13 +66,15 @@ function process(input)
   });
 
   var background = $('#background').val();
+  var encode = $('#encode').val();
   var freq = $('#freq').val();
   var match = $('#match').val();
+  var threshold = $('#threshold').val();
 
   $.ajax({
     url:          "php/motif.php",
     type:         "POST",
-    data:         "input=" + input + "&background=" + background + "&freq=" + freq + "&match=" + match ,
+    data:         "input=" + input + "&background=" + background + "&encode=" + encode + "&freq=" + freq + "&match=" + match + "&threshold=" + threshold,
     success:      function(msg)
     {
       $('#motif-raw').append("<p>[[ <a href='output/" + msg + "' target='_blank'>Download F-Motif raw output</a> ]]</p>");

@@ -57,7 +57,8 @@ public class MotifFinderV5 {
 	  posT = Double.parseDouble(args[5]);
 	  Mvalue = 30;
 	} else {
-	  System.out.print("java MotifFinderV5 INPUT_FILENAME [All|Homo] [[PFM|PWM|BIN]] FREQUENCY MATCH_NUMBER Threshold_T");
+	  System.out.print("java MotifFinderV5 INPUT_FILENAME [All|Homo] [[PFM|PWM|BIN]] FREQUENCY MATCH_NUMBER Threshold_T\n");
+	  return;
 	}
 
     	querydata data = new querydata();

@@ -43,7 +43,15 @@ function upload()
       error: function (data, status, e) { alert(e); }
     });
   } else {
-    process($('#sample').val());
+    $.ajax({
+      url:	"php/copy-sample.php",
+      type:     "POST",
+      data:	"input=" + $('#sample').val(),
+      success:	function(msg)
+      {
+	process(msg);
+      }
+    });
   }
 
   return false;
@@ -107,4 +115,10 @@ function analysis(input)
       $('#load').empty();
     }
   });
+}
+
+function total_motif(seq)
+{
+  var seq_p = $('#TM'+seq).html();
+  alert(seq_p);
 }

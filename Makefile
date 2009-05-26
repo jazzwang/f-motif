@@ -3,6 +3,7 @@ all:
 	wget http://weblogo.berkeley.edu/release/weblogo.2.8.2.tar.gz
 	tar zxvf weblogo.2.8.2.tar.gz
 	rm weblogo.2.8.2.tar.gz
+	apt-get install ghostscript
 	chown -R www-data:www-data *
 	chown -R www-data:www-data .*
 

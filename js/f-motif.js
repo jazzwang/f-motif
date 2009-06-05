@@ -1,3 +1,5 @@
+var input;
+
 $(function() {
   $("#tabs").tabs();
   init();
@@ -61,13 +63,14 @@ function process(input)
 {
   $('#load').append("<center><img src='image/loading.gif'><br/><br/>"
 		  + "<b><font color='#ff0000'>Your Request is still processing<br/>in background ....<br/></font></b></center>");
+
   $.ajax({
     url:          "php/weblogic.php",
     type:         "POST",
     data:         "input=" + input,
     success:      function(msg)
     {
-      $('#weblogo').append("<p>[[ <a href='output_image/" + msg + "' target='_blank'>Download weblogo result</a> ]]</p>");
+      $('#weblogo').append("<p>[[ <a href='output_image/" + msg + "' target='_blank'>Download weblogo result</a> ]] - [[ <a href='input/" + input + "' target='_blank'>Source Input</a> ]]</p>");
       $('#weblogo').append("<img src='output_image/" + msg + "'>");
       $('#status').append("<li><b>WebLogo generated!</b></li>");
     }
@@ -117,8 +120,31 @@ function analysis(input)
   });
 }
 
-function total_motif(seq)
+function matched_weblogo(id, input)
 {
-  var seq_p = $('#TM'+seq).html();
-  alert(seq_p);
+  /*
+  $.ajax({
+    url:          "php/weblogic.php",
+    type:         "POST",
+    data:         "input=" + input,
+    success:      function(msg)
+    {
+      $(id+"I").append("<p>[[ <a href='output_image/" + msg + "' target='_blank'>Download weblogo result</a> ]]</p>");
+      $(id+"I").append("<img src='output_image/" + msg + "'>");
+    }
+  });
+  */
+}
+
+function total_motif(id)
+{
+  var seq = $('#TM'+id).html();
+  $.ajax({
+    url:	  "php/total-motif.php",
+    type:	  "POST",
+    data:	  "seq=" + seq,
+    success:	  function(msg)
+    {
+    }
+  });
 }

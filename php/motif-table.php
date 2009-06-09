@@ -21,7 +21,7 @@
 	list($pattern, $score, $fgmatch) = split('[:X]', $buffer);
 	$buffer = str_replace(":","</td><td>",$buffer);
 	$buffer = str_replace("X","</td><td>",$buffer);
-	$total = $total . "<tr><td>" . str_replace("\n","</td><td><a href='output/$input_t-tm$tmcount.txt'>view</a></td></tr>",$buffer);
+	$total = $total . "<tr><td>" . str_replace("\n","</td><td><a href='output/$input_t-tm$tmcount.txt' target='_blank'>view</a></td></tr>",$buffer);
 	$total = $total . "<tr><td colspan='4'><img src='output_image/$input_t-tm$tmcount.png'></td></tr>";
 	$cmd    = $path . "/total-motif.sh " . $input_t . " $pattern $tmcount";
 	system($cmd, $ret);

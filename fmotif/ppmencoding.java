@@ -1,3 +1,4 @@
+package fmotif;
 import java.util.Vector;
 import java.io.IOException;
 import java.io.FileWriter;
@@ -6,8 +7,9 @@ import java.io.BufferedWriter;
 import java.math.BigDecimal;
 
 
+
 /**
- * 注意輸出FRAME有沒有平移
+ * �`�N��XFRAME���S������
  *
  */
  public  class ppmencoding extends Encoding{
@@ -86,6 +88,7 @@ import java.math.BigDecimal;
        int N = seqin.size();
        //SetBigBinomial(N);
        double[] BI =  LogFactorial (N);
+       
        char[] aaMap = {'A', 'R', 'N', 'D', 'C', 'Q', 'E', 'G', 'H',
                'I', 'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y',
                'V', 'X'};
@@ -93,7 +96,7 @@ import java.math.BigDecimal;
        Pssm = new double[pwm.wm.length][pwm.wm[0].length];
        Arith math = new Arith();
        int startPOS = 0;
-       double pricestion =  Math.pow(10.0,-16);
+       double pricestion =  Math.pow(10.0,-16);//Double.MIN_VALUE;//
        for (int i = 0 ; i < 20;i++){
 
            for (int j = 0 ; j <  data.windows_size;j++){
@@ -101,6 +104,7 @@ import java.math.BigDecimal;
                //if (pwm.wm[i][j] >= 0)
                {
             	   startPOS = (int)(pwm.wm[i][j] );
+            	   
                    for (int k = N ; k >=  startPOS; k--){
                        //BigDecimal P = new BigDecimal(bwm.wm[i][j]);
                        //BigDecimal NotP = new BigDecimal(1-bwm.wm[i][j]);
@@ -116,6 +120,8 @@ import java.math.BigDecimal;
                 	   Pssm[i][j] +=  pssmtemp;
                 	   
                   }
+                  
+            	   
 
                }
                //Pssm[i][j] = temp1.doubleValue();
@@ -211,6 +217,16 @@ import java.math.BigDecimal;
         }
 
         return encoding;
+    }
+    public void SetCenterAsZero() {
+    	int Dim = Pssm.length;
+    	int half = (Pssm[0].length - 1)/2;
+    	
+    	for (int i = 0; i < Dim; i++) {
+           Pssm[i][half] =0;
+        }
+
+        
     }
     public String SVMencoder(String insequence) {
         String encoding = "";
@@ -386,6 +402,17 @@ import java.math.BigDecimal;
 
 	       return factorial;
 	   }
+   public BigDecimal [] LogBigFactorial (int N ){
+	   BigDecimal[] factorial = new BigDecimal[N + 1];
+	      factorial[0] = BigDecimal.ZERO;
+	       for (int n = 0; n < N; n++){
+	    	   factorial[n+1].add(factorial[n]);//factorial[n].add(Math.log(n+1) 
+	    	   factorial[n+1].add(new BigDecimal(Math.log(n+1)));
+	       }
+	       
+	       return factorial;
+	   }
+
 
 
 

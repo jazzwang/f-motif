@@ -1,4 +1,4 @@
-
+package fmotif;
 import java.io.*;
 import java.math.BigDecimal;
 import java.util.*;
@@ -7,7 +7,7 @@ public class KMeans {
 	int state = 0;
 	int initLimit = 1000;
 	int rerunLimit = 5000;
-	int miniGroupsize = 5;
+	int miniGroupsize = 0;
 	int KNum;
 	int DataNum;
 	int Dim;
@@ -19,7 +19,7 @@ public class KMeans {
 
 	KMeans(Vector inDataPoints , int k){
 
-		KNum = k;
+		if (k <= 0){KNum = 1;}else{KNum = k;}
 		DataNum = inDataPoints.size();
 		RroupNum = new int[KNum];
 		DataPoints = new double[DataNum][];
@@ -40,7 +40,7 @@ public class KMeans {
 	}
 	KMeans(double[][] inDataPoints , int k){
 		
-		KNum = k;
+		if (k <= 0){KNum = 1;}else{KNum = k;}
 		DataNum = inDataPoints.length;
 		RroupNum = new int[KNum];
 		DataPoints = new double[DataNum][];
@@ -477,7 +477,7 @@ public class KMeans {
 
         set[position]++;
 
-        // 調整右邊元素
+        // �վ�k�䤸��
         for(int i = position + 1; i < set.length; i++)
             set[i] = set[i-1] + 1;
 

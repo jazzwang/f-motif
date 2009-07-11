@@ -1,3 +1,4 @@
+package fmotif;
 /**
  * <p>Title: </p>
  *
@@ -33,7 +34,7 @@ public class querydata {
     int choice;
     String shift;
     public querydata() {
-        choice =2;
+        choice =0;
         kinease = kinasesname[choice];
         //notkinease = testkinasesname[choice];
         species = speciesnames[0];

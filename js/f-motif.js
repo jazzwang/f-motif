@@ -15,7 +15,7 @@ function init()
   $('#status').empty();
 
   $('#motif-table').append("<tr><th>Motif Pattern</th><th>Match / Total</th><th>hit freq.</th><th>Background Match</th><th>Motif score</th><th>Matched Sequence</th></tr>");
-  $('#total-motif').append("<tr><th>Motif Pattern</th><th>Motif score</th><th>Forground Match</th><th>Matched Sequence</th></tr>");
+  $('#total-motif').append("<tr><th>Motif Pattern</th><th>Motif score</th><th>Forground Match</th><th>...</th><th>Matched Sequence</th></tr>");
 }
 
 function upload()
@@ -77,15 +77,17 @@ function process(input)
   });
 
   var background = $('#background').val();
-  var encode = $('#encode').val();
-  var freq = $('#freq').val();
-  var match = $('#match').val();
-  var threshold = $('#threshold').val();
+  var encode	 = $('#encode').val();
+  var freq	 = $('#freq').val();
+  var match	 = $('#match').val();
+  var cluster	 = $('#cluster').val();
+  var flat	 = $('#flat').val();
+  var threshold	 = $('#threshold').val();
 
   $.ajax({
     url:          "php/motif.php",
     type:         "POST",
-    data:         "input=" + input + "&background=" + background + "&encode=" + encode + "&freq=" + freq + "&match=" + match + "&threshold=" + threshold,
+    data:         "input=" + input + "&background=" + background + "&encode=" + encode + "&freq=" + freq + "&match=" + match + "&cluster=" + cluster + "&flat=" + flat + "&threshold=" + threshold,
     success:      function(msg)
     {
       $('#motif-raw').append("<p>[[ <a href='output/" + msg + "' target='_blank'>Download F-Motif raw output</a> ]]</p>");

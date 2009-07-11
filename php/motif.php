@@ -1,13 +1,15 @@
 <?
-  $input = str_replace(".txt","",$_POST["input"]);
+  $input      = str_replace(".txt","",$_POST["input"]);
   $background = $_POST["background"];
-  $encode = $_POST["encode"];
-  $freq = $_POST["freq"];
-  $match = $_POST["match"];
-  $threshold = $_POST["threshold"];
+  $encode     = $_POST["encode"];
+  $freq	      = $_POST["freq"];
+  $match      = $_POST["match"];
+  $cluster    = $_POST["cluster"];
+  $flat	      = $_POST["flat"];
+  $threshold  = $_POST["threshold"];
   $path  = str_replace("/php","",getcwd());
   chdir($path);
-  $cmd	  = $path . "/motif.sh " . $input . " " . $background . " " . $encode . " " . $freq . " " . $match . " " . $threshold;
+  $cmd	  = $path . "/motif.sh " . $input . " " . $background . " " . $encode . " " . $freq . " " . $match . " " . $cluster . " " . $flat . " " . $threshold;
   system($cmd, $ret);
   if($ret == 0)
   {

@@ -48,6 +48,14 @@
 		<select id="sample" name="sample">
 		  <option></option>
 		  <option value="nbt1146-S6.txt">NBT Sample</option>
+		  <option value="ELM_1208_backgroundset_S_13.txt" >ELM 1208 - ALL - S</option>
+		  <option value="ELM_1208_backgroundset_ST_13.txt">ELM 1208 - ALL - ST</option>
+		  <option value="ELM_1208_backgroundset_T_13.txt" >ELM 1208 - ALL - T</option>
+		  <option value="ELM_1208_backgroundset_Y_13.txt" >ELM 1208 - ALL - Y</option>
+		  <option value="ELM_1208_Homo-sapiens_backgroundset_S_13.txt" >ELM 1208 - Homo - S</option>
+		  <option value="ELM_1208_Homo-sapiens_backgroundset_ST_13.txt">ELM 1208 - Homo - ST</option>
+		  <option value="ELM_1208_Homo-sapiens_backgroundset_T_13.txt" >ELM 1208 - Homo - T</option>
+		  <option value="ELM_1208_Homo-sapiens_backgroundset_Y_13.txt" >ELM 1208 - Homo - Y</option>
 		  <option value="Seq_positive_ALL_CDK_S_13_phosphoELM_1208.txt">CDK - ALL</option>
 		  <option value="Seq_positive_ALL_CK2_S_13_phosphoELM_1208.txt">CK2 - ALL</option>
 		  <option value="Seq_positive_ALL_PKA_S_13_phosphoELM_1208.txt">PKA - ALL</option>
@@ -73,7 +81,13 @@
 		</select></td></tr>
 	      <tr><td><b> 4. Define Repeated Times: </b></td><td><input id="freq"      name="freq"      value="50"/></td></tr>
 	      <tr><td><b> 5. Define Match Number:   </b></td><td><input id="match"     name="match"     value="20"/></td></tr>
-	      <tr><td><b> 6. Define Threshold T:    </b></td><td><input id="threshold" name="threshold" value="0.4"/></td></tr>
+	      <tr><td><b> 6. Define Cluster Number: </b></td><td><input id="cluster"   name="cluster"	value="15"/></td></tr>
+	      <tr><td><b> 7. Define Absolute Flag:  </b></td><td>
+		<select id="flat" name="flat">
+		  <option selected value="1">True</option>
+		  <option          value="0">False</option>
+		</select></td></tr>
+	      <tr><td><b> 8. Define Threshold T:    </b></td><td><input id="threshold" name="threshold" value="15"/></td></tr>
 	      <tr><td><h2>Then click the submit button.</h2></td><td><input type="button" onclick="upload()" value="Submit"></td></tr>
 	    </table>
 	  </div>

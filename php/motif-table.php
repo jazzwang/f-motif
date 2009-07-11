@@ -19,6 +19,7 @@
       if($state == 1)
       {
 	list($pattern, $score, $fgmatch) = split('[:X]', $buffer);
+	$buffer = str_replace("::","</td><td>",$buffer);
 	$buffer = str_replace(":","</td><td>",$buffer);
 	$buffer = str_replace("X","</td><td>",$buffer);
 	$total = $total . "<tr><td>" . str_replace("\n","</td><td><a href='output/$input_t-tm$tmcount.txt' target='_blank'>view</a></td></tr>",$buffer);

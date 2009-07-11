@@ -1,3 +1,4 @@
+package fmotif;
 import java.util.Vector;
 import java.io.IOException;
 import java.io.FileWriter;
@@ -5,7 +6,7 @@ import java.io.PrintWriter;
 import java.io.BufferedWriter;
 
 /**
- * 注意輸出FRAME有沒有平移
+ * �`�N��XFRAME���S������
  *
  */
  public  class pfmencoding extends Encoding{
@@ -162,6 +163,16 @@ import java.io.BufferedWriter;
         }
 
         return encoding;
+    }
+    public void SetCenterAsZero() {
+    	int Dim = Pssm.length;
+    	int half = (Pssm[0].length - 1)/2;
+    	
+    	for (int i = 0; i < Dim; i++) {
+           Pssm[i][half] =0;
+        }
+
+        
     }
     public String PALSVMencoder(String insequence) {
         String encoding = "";

@@ -32,6 +32,7 @@ public class MotifFinderV6_5 {
     static private String Background;
     static private String EncodingMethod;
     static String PostiveFinName = "";
+    static String BackgroundFinName = "";
     
     String centerReg;
     char[] aaMap = {'A', 'R', 'N', 'D', 'C', 'Q', 'E', 'G', 'H',
@@ -59,7 +60,7 @@ public class MotifFinderV6_5 {
        querydata data = new querydata();
        data.shift = "";
        MotifFinderV6_5 SeqDatapool = new MotifFinderV6_5(data);
-        if(args.length > 0)
+        if(args.length >= 8)
         {
 
             SeqDatapool.PostiveFinName = args[0];
@@ -101,7 +102,7 @@ public class MotifFinderV6_5 {
             
             SeqDatapool.Mvalue = 1.5*SeqDatapool.MinMatchNum;
          } else {
-              System.out.print("java MotifFinderV5 INPUT_FILENAME [All|Homo] [[PFM|PWM|BIN]] FREQUENCY MATCH_NUMBER MINGROUPSIZE [Absoluteflag[1|0]] Threshold_T\n");
+              System.out.print("java MotifFinderV5 INPUT_FILENAME BACKGROUND_FILENAME [[PFM|PWM|BIN]] FREQUENCY MATCH_NUMBER MINGROUPSIZE [Absoluteflag[1|0]] Threshold_T\n");
               return;
          }   
 		       
@@ -143,7 +144,11 @@ public class MotifFinderV6_5 {
 
                 BufferedReader PostiveFin = new BufferedReader(new FileReader(FullPostiveFinName));
                
+	       BackgroundFinName="./PTMDATA/"+Background;
 	       BufferedReader backgroundFin;
+	       backgroundFin = new BufferedReader(
+		  new FileReader(BackgroundFinName));
+	       /*
 	       if ( Background.equals("All") )
 	       {
 		  		backgroundFin = new BufferedReader(new
@@ -152,6 +157,7 @@ public class MotifFinderV6_5 {
 		  		backgroundFin = new BufferedReader(new
                         FileReader("./PTMDATA/ELM_1208_Homo sapiens_backgroundset_S_13.txt"));
 	      	}
+		*/
                  PrintWriter GroupNumOut = new PrintWriter(new BufferedWriter(
                 		new FileWriter("./output/" +PostiveFinName+"_MotifLog.csv")));
                  PrintWriter FinalMotifList = new PrintWriter(new BufferedWriter(

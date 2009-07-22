@@ -7,19 +7,19 @@ help:
 	@echo " make update  - Clean up input, output files"
 
 weblogo:
-	wget http://weblogo.berkeley.edu/release/weblogo.2.8.2.tar.gz
-	tar zxvf weblogo.2.8.2.tar.gz
-	rm weblogo.2.8.2.tar.gz
-	apt-get install ghostscript
+	@wget http://weblogo.berkeley.edu/release/weblogo.2.8.2.tar.gz
+	@tar zxvf weblogo.2.8.2.tar.gz
+	@rm weblogo.2.8.2.tar.gz
+	@apt-get install ghostscript
 build:	weblogo
-	javac -cp . MotifFinderV5.java
-	chown -R www-data:www-data *
-	chown -R www-data:www-data .*
+	@javac -cp . fmotif/MotifFinderV6_5.java
+	@chown -R www-data:www-data *
+	@chown -R www-data:www-data .*
 
 clean:
-	rm *.class
+	@rm fmotif/*.class
 
 update:
-	rm output_image/*
-	rm output/*
-	rm input/[0-9]*
+	@rm -f output_image/*
+	@rm -f output/*
+	@rm -f input/[0-9]*

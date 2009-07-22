@@ -34,17 +34,21 @@
   } elseif (empty($_FILES[$fileElementName]['tmp_name']) || $_FILES[$fileElementName]['tmp_name'] == 'none') {
     $error = 'No file was uploaded..';
   } else {
-    $file_temp = $_FILES[$fileElementName]['tmp_name'];
-    $file_name = chop(`date +"%y%m%d%H%M%S.txt"`);
+    $file_temp  = $_FILES[$fileElementName]['tmp_name'];
+    $date       = chop(`date +"%y%m%d%H%M%S"`);
+    $file_name1 = "$date.txt";
+    $file_name2 = "$date-mt.txt";
     $path  = str_replace("/php","",getcwd());
-    $file_path = $path . "/input/";
-    if(!file_exists($file_path."/".$file_name)) {
+    $file_path1 = $path . "/input/";
+    $file_path2 = $path . "/output/";
+    if(!file_exists($file_path."/".$file_name1)) {
       //complete upload
-      $filestatus = move_uploaded_file($file_temp,$file_path."/".$file_name);
-      if(!$filestatus) {
+      $filestatus2 = copy($file_temp,$file_path2."/".$file_name2);
+      $filestatus1 = move_uploaded_file($file_temp,$file_path1."/".$file_name1);
+      if(!$filestatus1 || !$filestatus2) {
 	$error .= "Upload failed. Please try again.";
       } else {
-	$msg .= $file_name;
+	$msg .= $file_name1;
       }
     } else {
       $error .= "File already exists on server.";

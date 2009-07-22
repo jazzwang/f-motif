@@ -3,6 +3,13 @@ var input;
 $(function() {
   $("#tabs").tabs();
   init();
+  $('#fgdata_file').change(function () {
+    $('#sample').val("");
+
+  });
+  $('#sample').change(function () {
+    $('#fgdata_file').val("");
+  });
 });
 
 function init()

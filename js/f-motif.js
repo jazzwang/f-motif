@@ -18,11 +18,10 @@ function init()
   $('#weblogo').empty();
   $('#total-motif').empty();
   $('#motif-table').empty();
-  $('#motif-raw').empty();
   $('#status').empty();
 
-  $('#motif-table').append("<tr><th>Motif Pattern</th><th>Match / Total</th><th>hit freq.</th><th>Background Match</th><th>Motif score</th><th>Matched Sequence</th></tr>");
-  $('#total-motif').append("<tr><th>Motif Pattern</th><th>Motif score</th><th>Forground Match</th><th>...</th><th>Matched Sequence</th></tr>");
+  $('#motif-table').append("<tr><th>Motif Pattern</th><th>Match / Total</th><th>Hit Freq.</th><th>Background Match</th><th>Motif score</th><th>Matched Sequence</th></tr>");
+  $('#total-motif').append("<tr><th>Motif Pattern</th><th>Motif score</th><th>Forground Match</th><th>Hit Freq.</th><th>Matched Sequence</th></tr>");
 }
 
 function upload()
@@ -45,6 +44,8 @@ function upload()
 	    alert(data.error); 
 	  } else {
 	    $('#status').append("<li><b>File uploaded!</b></li>");
+	    $('#status').append("<li><b>Forground:</b> <u><a href='input/" + data.msg + "' target='_blank'>Download</a></u></li>");
+	    $('#status').append("<li><b>Background:</b> <u><a href='PTMDATA/" + $('#background').val() + "' target='_blank'>Download</a></u></li>");
 	    process(data.msg);
 	  }
 	}
@@ -58,6 +59,8 @@ function upload()
       data:	"input=" + $('#sample').val(),
       success:	function(msg)
       {
+	$('#status').append("<li><b>Forground:</b> <u><a href='input/" + $('#sample').val() + "' target='_blank'>Download</a></u></li>");
+	$('#status').append("<li><b>Background:</b> <u><a href='PTMDATA/" + $('#background').val() + "' target='_blank'>Download</a></u></li>");
 	process(msg);
       }
     });
@@ -97,9 +100,6 @@ function process(input)
     data:         "input=" + input + "&background=" + background + "&encode=" + encode + "&freq=" + freq + "&match=" + match + "&cluster=" + cluster + "&flat=" + flat + "&threshold=" + threshold,
     success:      function(msg)
     {
-      $('#motif-raw').append("<p>[[ <a href='output/" + msg + "' target='_blank'>Download F-Motif raw output</a> ]]</p>");
-      $('#motif-raw').append("<iframe src='output/" + msg + "' width='100%' height='300'/>");
-      $('#status').append("<li><b>Motif Raw Results generated!</b></li>");
       analysis(msg);
     }
   });

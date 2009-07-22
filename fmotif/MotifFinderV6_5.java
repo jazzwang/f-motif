@@ -68,9 +68,9 @@ public class MotifFinderV6_5 {
 	    SeqDatapool.Background = args[1];
             //SeqDatapool.Background = "Homo";
 	    SeqDatapool.EncodingMethod = args[2];
-            //SeqDatapool.EncodingMethod = "PFM";
+            //SeqDatapool.EncodingMethod = "PCM";
 
-            if (SeqDatapool.EncodingMethod.equals("PFM")){
+            if (SeqDatapool.EncodingMethod.equals("PCM")){
 		SeqDatapool.Encotype = 0;
 	    } else if (SeqDatapool.EncodingMethod.equals("PWM")){
 		SeqDatapool.Encotype = 1;
@@ -102,7 +102,7 @@ public class MotifFinderV6_5 {
             
             SeqDatapool.Mvalue = 1.5*SeqDatapool.MinMatchNum;
          } else {
-              System.out.print("java MotifFinderV5 INPUT_FILENAME BACKGROUND_FILENAME [[PFM|PWM|BIN]] FREQUENCY MATCH_NUMBER MINGROUPSIZE [Absoluteflag[1|0]] Threshold_T\n");
+              System.out.print("java MotifFinderV5 INPUT_FILENAME BACKGROUND_FILENAME [[PCM|PWM|BIN]] FREQUENCY MATCH_NUMBER MINGROUPSIZE [Absoluteflag[1|0]] Threshold_T\n");
               return;
          }   
 		       

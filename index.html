@@ -35,9 +35,8 @@
 	  <ul>
 	    <li><a href="#tabs-1">Input</a></li>
 	    <li><a href="#tabs-2">Weblogo</a></li>
-	    <li><a href="#tabs-3">Total Motif</a></li>
-	    <li><a href="#tabs-4">Motif Table</a></li>
-	    <li><a href="#tabs-5">Raw Output</a></li>
+	    <li><a href="#tabs-3">Composite List of Motifs (CML)</a></li>
+	    <li><a href="#tabs-4">Final List of Motifs (FLM)</a></li>
 	  </ul>
 	  <div id="tabs-1">
 	    <table cellpadding="12" cellspacing="12">
@@ -72,19 +71,15 @@
 		</select></td></tr>
 	      <tr><td><b> 3. Choose Encoding Method:</b></td><td>
 		<select id="encode" name="encode">
-		  <option value="PFM">PFM</option>
+		  <option value="PCM">PCM</option>
 		  <option value="PWM">PWM</option>
 		  <option value="BIN">BIN</option>
 		</select></td></tr>
 	      <tr><td><b> 4. Define Repeated Times: </b></td><td><input id="freq"      name="freq"      value="50"/></td></tr>
-	      <tr><td><b> 5. Define Match Number:   </b></td><td><input id="match"     name="match"     value="20"/></td></tr>
-	      <tr><td><b> 6. Define Cluster Number: </b></td><td><input id="cluster"   name="cluster"	value="15"/></td></tr>
-	      <tr><td><b> 7. Define Absolute Flag:  </b></td><td>
-		<select id="flat" name="flat">
-		  <option selected value="1">True</option>
-		  <option          value="0">False</option>
-		</select></td></tr>
-	      <tr><td><b> 8. Define Threshold T:    </b></td><td><input id="threshold" name="threshold" value="15"/></td></tr>
+	      <tr><td><b> 5. Define Match Number <i>M</i>:   </b></td><td><input id="match"     name="match"     value="20"/></td></tr>
+	      <tr><td><b> 6. Define Threshold <i>G</i> for Small Clusters: </b></td><td><input id="cluster"   name="cluster"	value="15"/></td></tr>
+		<input type="hidden" id="flat" name="flat" value="1">
+	      <tr><td><b> 7. Define Threshold <i>T</i> for Conserved Position:    </b></td><td><input id="threshold" name="threshold" value="15"/></td></tr>
 	      <tr><td><h2>Then click the submit button.</h2></td><td><input type="button" onclick="upload()" value="Submit"></td></tr>
 	    </table>
 	  </div>
@@ -96,9 +91,6 @@
 	  </div>
 	  <div id="tabs-4">
 	    <table id="motif-table" border="1"></table>
-	  </div>
-	  <div id="tabs-5">
-	    <div id="motif-raw"></div>
 	  </div>
 	</div>
       </div>

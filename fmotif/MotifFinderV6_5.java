@@ -526,7 +526,7 @@ public class MotifFinderV6_5 {
 	                		}
 	                	}
 	                	String printScore = String.format("%2.2f",MotifScoreTemp );
-	                	System.out.println(Temp+":"+printScore+"X"+MotifMatchTimesTemp+"::"+(Integer)MotifTimes.get(Temp));
+	                	System.out.println(Temp+":"+MotifMatchTimesTemp+"::"+(Integer)MotifTimes.get(Temp));
 	                	StringCML += Temp+":"+printScore+"X"+MotifMatchTimesTemp+"::"+(Integer)MotifTimes.get(Temp)+"\n";
 
 				 }

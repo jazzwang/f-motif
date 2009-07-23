@@ -2,6 +2,12 @@ var input;
 
 $(function() {
   $("#tabs").tabs();
+  $("#annotation").dialog({
+    autoOpen: false, bgiframe: true, modal: true, 
+    maxHeight: 400, maxWidth: 1024,
+    height: 400, width: 1024,
+    buttons: { Ok: function() {	$(this).dialog('close'); } }
+  });
   init();
   $('#fgdata_file').change(function () {
     $('#sample').val("");
@@ -21,7 +27,7 @@ function init()
   $('#status').empty();
 
   $('#motif-table').append("<tr><th>Motif Pattern</th><th>Match / Total</th><th>Hit Freq.</th><th>Background Match</th><th>Motif score</th><th>Matched Sequence</th></tr>");
-  $('#total-motif').append("<tr><th>Motif Pattern</th><th>Motif score</th><th>Forground Match</th><th>Hit Freq.</th><th>Matched Sequence</th></tr>");
+  $('#total-motif').append("<tr><th>Motif Pattern</th><th>Forground Match</th><th>Hit Freq.</th><th>Matched Sequence</th></tr>");
 }
 
 function upload()
@@ -100,6 +106,7 @@ function process(input)
     data:         "input=" + input + "&background=" + background + "&encode=" + encode + "&freq=" + freq + "&match=" + match + "&cluster=" + cluster + "&flat=" + flat + "&threshold=" + threshold,
     success:      function(msg)
     {
+      $('#status').append("<li><b><a href='output/" + msg + "' target='_blank'>1st stage analysis</a> finished!</b></li>");
       analysis(msg);
     }
   });
@@ -122,27 +129,11 @@ function analysis(input)
 	$('#motif-table tr:even').addClass('even');
 	$('#motif-table tr:odd').addClass('odd');
       });
-      $('#status').append("<li><b>Total Motif generated!</b></li>");
-      $('#status').append("<li><b>Motif Table generated!</b></li>");
+      $('#status').append("<li><b>CML generated!</b></li>");
+      $('#status').append("<li><b>FLM generated!</b></li>");
       $('#load').empty();
     }
   });
-}
-
-function matched_weblogo(id, input)
-{
-  /*
-  $.ajax({
-    url:          "php/weblogic.php",
-    type:         "POST",
-    data:         "input=" + input,
-    success:      function(msg)
-    {
-      $(id+"I").append("<p>[[ <a href='output_image/" + msg + "' target='_blank'>Download weblogo result</a> ]]</p>");
-      $(id+"I").append("<img src='output_image/" + msg + "'>");
-    }
-  });
-  */
 }
 
 function total_motif(id)
@@ -156,4 +147,9 @@ function total_motif(id)
     {
     }
   });
+}
+
+function show_annotation()
+{
+  $("#annotation").dialog("open");
 }

@@ -18,20 +18,14 @@ $(function() {
   });
   $('#match').change(function () {
     value = $('#match').val();
-    if(value <= 0)
-    {
-      alert("Must define positive value for Match Number M!");
-      $('#match').val("20");
-      $('#cluster').empty();
-      $('#cluster').append("<option value='10'>10</option>");
-      $('#cluster').append("<option selected value='15'>15</option>");
-      $('#cluster').append("<option value='20'>20</option>");
-    } else {
-      $('#cluster').empty();
-      $('#cluster').append("<option value='" + value * 0.50 + "'>" + value * 0.5 +"</option>");
-      $('#cluster').append("<option selected value='" + value * 0.75 + "'>" + value * 0.75 +"</option>");
-      $('#cluster').append("<option value='" + value + "'>" + value + "</option>");
-    }
+    $('#cluster').empty();
+    $('#threshold').empty();
+    option = value;
+    do {
+      $('#cluster').append("<option value='"+option+"'>"+option+"</option>");
+      $('#threshold').append("<option value='"+option+"'>"+option+"</option>");
+      option = option - 5;
+    } while(option >= value/2);
   });
 });
 

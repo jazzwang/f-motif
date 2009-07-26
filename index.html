@@ -81,17 +81,25 @@
 	      <tr><td><b> 4. Define Repeated Times: </b></td><td><input id="freq"      name="freq"      value="50"/></td></tr>
 	      <tr><td><b> 5. Define Match Number <i>M</i>:   </b></td><td>
 		<select id="match"   name="match">
-		  <option value="20">20</option>
+		  <option value="10">10</option>
+		  <option value="20" selected>20</option>
+		  <option value="30">30</option>
 		  <option value="40">40</option>
+		  <option value="50">50</option>
 		</select></td></tr>
 	      <tr><td><b> 6. Define Threshold <i>G</i> for Small Clusters: </b></td><td>
 		<select id="cluster" name="cluster">
-		  <option value="10">10</option>
-		  <option selected value="15">15</option>
 		  <option value="20">20</option>
+		  <option value="15" selected>15</option>
+		  <option value="10">10</option>
 		</select></td></tr>
 		<input type="hidden" id="flat" name="flat" value="1">
-	      <tr><td><b> 7. Define Threshold <i>T</i> for Conserved Position:    </b></td><td><input id="threshold" name="threshold" value="15"/></td></tr>
+	      <tr><td><b> 7. Define Threshold <i>T</i> for Conserved Position:</b></td>
+		<td><select id="threshold" name="threshold"/>
+		  <option value="20">20</option>
+		  <option value="15" selected>15</option>
+		  <option value="10">10</option>
+		</select></td></tr>
 	      <tr><td><h2>Then click the submit button.</h2></td><td><input type="button" onclick="upload()" value="Submit"></td></tr>
 	    </table>
 	  </div>

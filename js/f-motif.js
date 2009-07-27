@@ -20,12 +20,12 @@ $(function() {
     value = $('#match').val();
     $('#cluster').empty();
     $('#threshold').empty();
-    option = value;
+    option = value/2;
     do {
       $('#cluster').append("<option value='"+option+"'>"+option+"</option>");
       $('#threshold').append("<option value='"+option+"'>"+option+"</option>");
-      option = option - 5;
-    } while(option >= value/2);
+      option = option + 5;
+    } while(option <= value);
   });
 });
 

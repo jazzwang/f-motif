@@ -44,7 +44,7 @@
 	  <div id="tabs-1">
 	    <table cellpadding="12" cellspacing="12">
 	      <tr><td colspan=2><h2>Please fill following fields:</h2></td></tr>
-	      <tr><td colspan=2><b> 1. Choose Forground File: </b></td></tr>
+	      <tr><td colspan=2><b> 1. Supply Foreground File: </b></td></tr>
 	      <tr><td>1.1 Select a sample file:</td><td>
 		<select id="sample" name="sample">
 		  <option></option>
@@ -61,7 +61,7 @@
 		  <option value="Seq_positive_Homo-sapiens_4-Kinases_S_13_phosphoELM_1208.txt">4 Kinases - Homo</option>
 		</select></td></tr>
 	      <tr><td>1.2 Upload a text file:  </td><td><input type="file" id="fgdata_file" name="fgdata_file" value=""/></td></tr>
-	      <tr><td><b> 2. Choose Background Type:</b></td><td>
+	      <tr><td><b> 2. Choose the Background Type:</b></td><td>
 		<select id="background" name="background">
 		  <option value="ELM_1208_backgroundset_S_13.txt" >All - All Species - S</option>
 		  <option value="ELM_1208_backgroundset_ST_13.txt">All - All Species - S/T</option>
@@ -72,28 +72,28 @@
 		  <option value="ELM_1208_Homo-sapiens_backgroundset_T_13.txt" >Homo - Human only - T</option>
 		  <option value="ELM_1208_Homo-sapiens_backgroundset_Y_13.txt" >Homo - Human only - Y</option>
 		</select></td></tr>
-	      <tr><td><b> 3. Choose Encoding Method:</b></td><td>
+	      <tr><td><b> 3. Choose an Encoding Method:</b></td><td>
 		<select id="encode" name="encode">
 		  <option value="PCM">PCM</option>
 		  <option value="PWM">PWM</option>
 		  <option value="BIN">BIN</option>
 		</select></td></tr>
-	      <tr><td><b> 4. Define Repeated Times: </b></td><td><input id="freq"      name="freq"      value="50"/></td></tr>
-	      <tr><td><b> 5. Define Match Number <i>M</i>:   </b></td><td>
+	      <tr><td><b> 4. Number of Iterations:</b></td><td><input id="freq"      name="freq"      value="50"/></td></tr>
+	      <tr><td><b> 5. Choose <i>M</i> for Identifying Motifs:</b></td><td>
 		<select id="match"   name="match">
 		  <option value="20" selected>20</option>
 		  <option value="30">30</option>
 		  <option value="40">40</option>
 		  <option value="50">50</option>
 		</select></td></tr>
-	      <tr><td><b> 6. Define Threshold <i>G</i> for Small Clusters: </b></td><td>
+	      <tr><td><b> 6. Choose <i>G</i> to define small cluster: </b></td><td>
 		<select id="cluster" name="cluster">
 		  <option value="20">20</option>
 		  <option value="15" selected>15</option>
 		  <option value="10">10</option>
 		</select></td></tr>
 		<input type="hidden" id="flat" name="flat" value="1">
-	      <tr><td><b> 7. Define Threshold <i>T</i> for Conserved Position:</b></td>
+	      <tr><td><b> 7. Choose <i>T</i> to define potential conserved position:</b></td>
 		<td><select id="threshold" name="threshold"/>
 		  <option value="20">20</option>
 		  <option value="15" selected>15</option>

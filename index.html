@@ -28,6 +28,7 @@
       <ul>
 	<li class="page_item page-item-2"><a href="#" onclick="show_annotation();" title="Annotation">Annotation</a></li>
 	<li class="page_item page-item-2"><a href="#" title="About">About</a></li>
+	<li class="page_item page-item-2"><a href="#" onclick="show_download();" title="Download">Download</a></li>
       </ul>
     </div>
   </div>
@@ -44,7 +45,7 @@
 	  <div id="tabs-1">
 	    <table cellpadding="12" cellspacing="12">
 	      <tr><td colspan=2><h2>Please fill following fields:</h2></td></tr>
-	      <tr><td colspan=2><b> 1. Supply Foreground File: </b></td></tr>
+	      <tr><td colspan=2><b> 1. Supply a Foreground File: </b></td></tr>
 	      <tr><td>1.1 Select a sample file:</td><td>
 		<select id="sample" name="sample">
 		  <option></option>
@@ -78,26 +79,18 @@
 		  <option value="PWM">PWM</option>
 		  <option value="BIN">BIN</option>
 		</select></td></tr>
-	      <tr><td><b> 4. Number of Iterations:</b></td><td><input id="freq"      name="freq"      value="50"/></td></tr>
+-             <tr><td><b> 4. Number of Iterations:</b></td>
+		  <td><input id="freq" readonly="readonly" name="freq" value="100"/></td>
+	      </tr>
 	      <tr><td><b> 5. Choose <i>M</i> for Identifying Motifs:</b></td><td>
 		<select id="match"   name="match">
-		  <option value="20" selected>20</option>
-		  <option value="30">30</option>
-		  <option value="40">40</option>
-		  <option value="50">50</option>
 		</select></td></tr>
 	      <tr><td><b> 6. Choose <i>G</i> to define small cluster: </b></td><td>
 		<select id="cluster" name="cluster">
-		  <option value="20">20</option>
-		  <option value="15" selected>15</option>
-		  <option value="10">10</option>
 		</select></td></tr>
 		<input type="hidden" id="flat" name="flat" value="1">
 	      <tr><td><b> 7. Choose <i>T</i> to define potential conserved position:</b></td>
 		<td><select id="threshold" name="threshold"/>
-		  <option value="20">20</option>
-		  <option value="15" selected>15</option>
-		  <option value="10">10</option>
 		</select></td></tr>
 	      <tr><td><h2>Then click the submit button.</h2></td><td><input type="button" onclick="upload()" value="Submit"></td></tr>
 	    </table>
@@ -146,6 +139,13 @@
   <p>The foreground data set considering only human species with respect to PKA, PKC, CDK, and CK2 kinase substrates (729 serine-phosphorylated peptides)</p></li>
   <li><b>BH</b>
   <p>Human background data set (249175 serine-phosphorylated and non-phosphorylated peptides)</p></li></ol>
+</div>
+<div id="download" title="Download" align="left">
+  <h3>Download Data Set:</h3>
+  <ol>
+    <li><a href='input/foregroundset.zip' target='_blank'><font color='blue'>Foreground Data Set</font></a></li>
+    <li><a href='input/backgroundset.zip' target='_blank'><font color='blue'>Background Data Set</font></a></li>
+  </ol>
 </div>
 <div id="footer">
   <div id="footer_inner">

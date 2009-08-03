@@ -1,17 +1,31 @@
 var input;
 
 $(function() {
+  // 使用 jQuery UI 的 Tab 元件
   $("#tabs").tabs();
+  // 使用 jQuery UI 的 Dialog 元件
   $("#annotation").dialog({
     autoOpen: false, bgiframe: true, modal: true, 
     maxHeight: 400, maxWidth: 1024,
     height: 400, width: 1024,
     buttons: { Ok: function() {	$(this).dialog('close'); } }
   });
-  init();
+  $("#download").dialog({
+    autoOpen: false, bgiframe: true, modal: true, 
+    buttons: { Ok: function() {	$(this).dialog('close'); } }
+  });
+  // 只有載入時產生 match 下拉式選單的値(M)
+  for ( i=15; i<=40; i++)
+  {
+    if(i==20) {
+      $("#match").append("<option value='"+i+"' selected>"+i+"</option>");
+    } else {
+      $("#match").append("<option value='"+i+"'>"+i+"</option>");
+    }
+  }
+  // 設定 onChange Event 處理函式
   $('#fgdata_file').change(function () {
     $('#sample').val("");
-
   });
   $('#sample').change(function () {
     $('#fgdata_file').val("");
@@ -20,13 +34,21 @@ $(function() {
     value = $('#match').val();
     $('#cluster').empty();
     $('#threshold').empty();
-    option = value/2;
-    do {
-      $('#cluster').append("<option value='"+option+"'>"+option+"</option>");
-      $('#threshold').append("<option value='"+option+"'>"+option+"</option>");
-      option = option + 5;
-    } while(option <= value);
+    for ( j=10; j<=value; j++)
+    {
+      if(j==10) {
+	$("#cluster").append("<option value='"+j+"' selected>"+j+"</option>");
+	$("#threshold").append("<option value='"+j+"' selected>"+j+"</option>");
+      } else {
+	$("#cluster").append("<option value='"+j+"'>"+j+"</option>");
+	$("#threshold").append("<option value='"+j+"'>"+j+"</option>");
+      }
+    }
   });
+  // 只有載入時產生 cluster,threshold 下拉式選單的初始値 (G,T)
+  $('#match').change();
+  // 其他通用初始化動作
+  init();
 });
 
 function init()
@@ -163,4 +185,9 @@ function total_motif(id)
 function show_annotation()
 {
   $("#annotation").dialog("open");
+}
+
+function show_download()
+{
+  $("#download").dialog("open");
 }

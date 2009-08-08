@@ -191,3 +191,37 @@ function show_download()
 {
   $("#download").dialog("open");
 }
+
+function IsNumeric(sText)
+{ 
+  //判斷是否為數值
+  var ValidChars = "0123456789.";
+  var IsNumber=true;
+  var Char;
+  
+  for (i = 0; i < sText.length && IsNumber == true; i++) 
+  { 
+    Char = sText.charAt(i); 
+    if (ValidChars.indexOf(Char) == -1) 
+    {
+      IsNumber = false;
+    }
+  }
+  return IsNumber;   
+}
+
+function check_freq() 
+{
+  value = $('#freq').val();
+  if(IsNumeric(value))
+  {
+    if( value < 50 || value > 100 )
+    {
+      $('#freq').val("50");
+      alert("Please enter an number between 50 to 100, thanks!");
+    }
+  } else {
+    $('#freq').val("50");
+    alert("No text. Please enter an number between 50 to 100, thanks!");
+  }
+}

@@ -17,7 +17,16 @@
   <script type="text/javascript" language="javascript" src="js/jquery-ui.min.js"></script>
   <script type="text/javascript" language="javascript" src="js/jquery.ajaxfileupload.js"></script>
   <script type="text/javascript" language="javascript" src="js/f-motif.js"></script>
-</head><body>
+</head>
+<?
+$id=$_GET['id'];
+if($id != "")
+{
+  echo "<body onload='set_id(\"$id\");'>";
+} else {
+  echo "<body>";
+}
+?>
 <div id="wrap">
   <div id="header">
     <div id="header_center">
@@ -26,6 +35,7 @@
     </div>
     <div id="navigation">
       <ul>
+	<li class="page_item page-item-2"><a href="/">Home</a></li>
 	<li class="page_item page-item-2"><a href="#" onclick="show_annotation();" title="Annotation">Annotation</a></li>
 	<li class="page_item page-item-2"><a href="#" title="About">About</a></li>
 	<li class="page_item page-item-2"><a href="#" onclick="show_download();" title="Download">Download</a></li>

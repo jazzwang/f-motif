@@ -124,6 +124,8 @@ function process(input)
       $('#status').append("<li><b>WebLogo generated!</b></li>");
     }
   });
+  
+  $('#status').append("<li><b>Use <u><a href='?id="+ input.replace('.txt','') +"'>this URL</a></u> to get history results.</b></li>");
 
   var background = $('#background').val();
   var encode	 = $('#encode').val();
@@ -165,19 +167,6 @@ function analysis(input)
       $('#status').append("<li><b>CML generated!</b></li>");
       $('#status').append("<li><b>FLM generated!</b></li>");
       $('#load').empty();
-    }
-  });
-}
-
-function total_motif(id)
-{
-  var seq = $('#TM'+id).html();
-  $.ajax({
-    url:	  "php/total-motif.php",
-    type:	  "POST",
-    data:	  "seq=" + seq,
-    success:	  function(msg)
-    {
     }
   });
 }
@@ -224,4 +213,40 @@ function check_freq()
     $('#freq').val("50");
     alert("No text. Please enter an number between 50 to 100, thanks!");
   }
+}
+
+function set_id(id)
+{
+  $.ajax({
+    url:          "php/history-weblogo.php",
+    type:         "POST",
+    data:         "id=" + id,
+    success:      function(msg)
+    {
+      $('#weblogo').append("<p>[[ <a href='output_image/" + id + ".png' target='_blank'>Download weblogo result</a> ]] - [[ <a href='input/" + id + ".txt' target='_blank'>Source Input</a> ]]</p>");
+      $('#weblogo').append("<img src='output_image/" + id + ".png'>");
+      $('#status').append("<li><b>WebLogo generated!</b></li>");
+    }
+  });
+
+  $.ajax({
+    url:          "php/history-motif.php",
+    type:	  "POST",
+    data:	  "id=" + id,
+    success:	  function(msg)
+    {
+      var json = eval(msg);
+      $.each(json, function(i, item){
+	$('#total-motif').append(item.total);
+	$('#total-motif tr:even').addClass('even');
+	$('#total-motif tr:odd').addClass('odd');
+	$('#motif-table').append(item.table);
+	$('#motif-table tr:even').addClass('even');
+	$('#motif-table tr:odd').addClass('odd');
+      });
+      $('#status').append("<li><b>CML generated!</b></li>");
+      $('#status').append("<li><b>FLM generated!</b></li>");
+      $('#load').empty();
+    }
+  });
 }

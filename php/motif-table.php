@@ -2,7 +2,6 @@
   $path	    = str_replace("/php","",getcwd());
   $input    = fopen($path . "/output/" . $_POST["input"],"r");
   $input_t  = str_replace(".txt","",$_POST["input"]);
-  $path	    = str_replace("/php","",getcwd());
   $state    = 0;
   $tmcount  = 0;
   $mtcount  = 0;

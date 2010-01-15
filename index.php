@@ -35,9 +35,8 @@ if($id != "")
     </div>
     <div id="navigation">
       <ul>
-	<li class="page_item page-item-2"><a href="/">Home</a></li>
+	<li class="page_item page-item-2"><a href="index.php">Home</a></li>
 	<li class="page_item page-item-2"><a href="#" onclick="show_annotation();" title="Annotation">Annotation</a></li>
-	<li class="page_item page-item-2"><a href="#" title="About">About</a></li>
 	<li class="page_item page-item-2"><a href="#" onclick="show_download();" title="Download">Download</a></li>
       </ul>
     </div>
@@ -55,11 +54,11 @@ if($id != "")
 	  <div id="tabs-1">
 	    <table cellpadding="12" cellspacing="12">
 	      <tr><td colspan=2><h2>Please fill following fields:</h2></td></tr>
-	      <tr><td colspan=2><b> 1. Supply a Foreground File: </b></td></tr>
-	      <tr><td>1.1 Select a sample file:</td><td>
+	      <tr><td><b> 1. Supply a Foreground File: </b></td><td id="input_file"></td></tr>
+	      <tr id="samples"><td>1.1 Select a sample file:</td><td>
 		<select id="sample" name="sample">
 		  <option></option>
-		  <option value="nbt1146-S6.txt">NBT Sample</option>
+		  <option value="nbt1146-S6.txt">Nature bio-tech data</option>
 		  <option value="Seq_positive_ALL_CDK_S_13_phosphoELM_1208.txt">CDK - ALL</option>
 		  <option value="Seq_positive_ALL_CK2_S_13_phosphoELM_1208.txt">CK2 - ALL</option>
 		  <option value="Seq_positive_ALL_PKA_S_13_phosphoELM_1208.txt">PKA - ALL</option>
@@ -71,17 +70,11 @@ if($id != "")
 		  <option value="Seq_positive_Homo-sapiens_PKC_S_13_phosphoELM_1208.txt">PKC - Homo</option>
 		  <option value="Seq_positive_Homo-sapiens_4-Kinases_S_13_phosphoELM_1208.txt">4 Kinases - Homo</option>
 		</select></td></tr>
-	      <tr><td>1.2 Upload a text file:  </td><td><input type="file" id="fgdata_file" name="fgdata_file" value=""/></td></tr>
+	      <tr id="uploads"><td>1.2 Upload a text file:  </td><td><input type="file" id="fgdata_file" name="fgdata_file" value=""/></td></tr>
 	      <tr><td><b> 2. Choose the Background Type:</b></td><td>
 		<select id="background" name="background">
-		  <option value="ELM_1208_backgroundset_S_13.txt" >All - All Species - S</option>
-		  <option value="ELM_1208_backgroundset_ST_13.txt">All - All Species - S/T</option>
-		  <option value="ELM_1208_backgroundset_T_13.txt" >All - All Species - T</option>
-		  <option value="ELM_1208_backgroundset_Y_13.txt" >All - All Species - Y</option>
-		  <option value="ELM_1208_Homo-sapiens_backgroundset_S_13.txt" >Homo - Human only - S</option>
-		  <option value="ELM_1208_Homo-sapiens_backgroundset_ST_13.txt">Homo - Human only - S/T</option>
-		  <option value="ELM_1208_Homo-sapiens_backgroundset_T_13.txt" >Homo - Human only - T</option>
-		  <option value="ELM_1208_Homo-sapiens_backgroundset_Y_13.txt" >Homo - Human only - Y</option>
+		  <option value="ELM_1208_backgroundset_S_13.txt" >All Species - S</option>
+		  <option value="ELM_1208_Homo-sapiens_backgroundset_S_13.txt" >Human only - S</option>
 		</select></td></tr>
 	      <tr><td><b> 3. Choose an Encoding Method:</b></td><td>
 		<select id="encode" name="encode">
@@ -102,7 +95,7 @@ if($id != "")
 	      <tr><td><b> 7. Choose <i>T</i> to define potential conserved position:</b></td>
 		<td><select id="threshold" name="threshold"/>
 		</select></td></tr>
-	      <tr><td><h2>Then click the submit button.</h2></td><td><input type="button" onclick="upload()" value="Submit"></td></tr>
+	      <tr id="submit"><td><h2>Then click the submit button.</h2></td><td><input type="button" onclick="upload()" value="Submit"></td></tr>
 	    </table>
 	  </div>
 	  <div id="tabs-2">
@@ -152,10 +145,7 @@ if($id != "")
 </div>
 <div id="download" title="Download" align="left">
   <h3>Download Data Set:</h3>
-  <ol>
-    <li><a href='input/foregroundset.zip' target='_blank'><font color='blue'>Foreground Data Set</font></a></li>
-    <li><a href='input/backgroundset.zip' target='_blank'><font color='blue'>Background Data Set</font></a></li>
-  </ol>
+  <p> You can download the foreground and background data sets from this <a href='input/dataset.zip' target='_blank'><font color='blue'>"Data Set Archive"</font></a></p>
 </div>
 <div id="footer">
   <div id="footer_inner">

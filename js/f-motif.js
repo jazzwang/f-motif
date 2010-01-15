@@ -113,6 +113,14 @@ function process(input)
   $('#load').append("<center><img src='image/loading.gif'><br/><br/>"
 		  + "<b><font color='#ff0000'>Your Request is still processing<br/>in background ....<br/></font></b></center>");
 
+  var background = $('#background').val();
+  var encode	 = $('#encode').val();
+  var freq	 = $('#freq').val();
+  var match	 = $('#match').val();
+  var cluster	 = $('#cluster').val();
+  var flat	 = $('#flat').val();
+  var threshold	 = $('#threshold').val();
+
   $.ajax({
     url:          "php/weblogic.php",
     type:         "POST",
@@ -124,16 +132,12 @@ function process(input)
       $('#status').append("<li><b>WebLogo generated!</b></li>");
     }
   });
-  
-  $('#status').append("<li><b>Use <u><a href='?id="+ input.replace('.txt','') +"'>this URL</a></u> to get history results.</b></li>");
 
-  var background = $('#background').val();
-  var encode	 = $('#encode').val();
-  var freq	 = $('#freq').val();
-  var match	 = $('#match').val();
-  var cluster	 = $('#cluster').val();
-  var flat	 = $('#flat').val();
-  var threshold	 = $('#threshold').val();
+  if($('#encode').val() == "BIN")
+  {
+    $('#status').append("<li><b><font color='red'>Warning: it will take more than 1 hours if you choose 'BIN' encoding method! Please check the result using following URL, thanks.</font></b></li>");
+  }
+  $('#status').append("<li><b>Use <u><a href='?id="+ input.replace('.txt','') +"'>this URL</a></u> to get history results.</b></li>");
 
   $.ajax({
     url:          "php/motif.php",
@@ -141,10 +145,16 @@ function process(input)
     data:         "input=" + input + "&background=" + background + "&encode=" + encode + "&freq=" + freq + "&match=" + match + "&cluster=" + cluster + "&flat=" + flat + "&threshold=" + threshold,
     success:      function(msg)
     {
-      $('#status').append("<li><b><a href='output/" + msg + "' target='_blank'>1st stage analysis</a> finished!</b></li>");
+      //$('#status').append("<li><b><a href='output/" + msg + "' target='_blank'>1st stage analysis</a> finished!</b></li>");
       analysis(msg);
     }
   });
+
+  if($('#encode').val() == "BIN")
+  {
+    $('#status').append("<li><b><font color='#00FF00'>Now, it's safe to close your browser!</font></b></li>");
+    $('#load').empty();
+  }
 }
 
 function analysis(input)
@@ -217,6 +227,9 @@ function check_freq()
 
 function set_id(id)
 {
+  $('#load').append("<center><img src='image/loading.gif'><br/><br/>"
+                  + "<b><font color='#ff0000'>Your Request will be processed<br/>within one minute ....<br/></font></b></center>");
+
   $.ajax({
     url:          "php/history-weblogo.php",
     type:         "POST",
@@ -235,17 +248,22 @@ function set_id(id)
     data:	  "id=" + id,
     success:	  function(msg)
     {
-      var json = eval(msg);
-      $.each(json, function(i, item){
-	$('#total-motif').append(item.total);
-	$('#total-motif tr:even').addClass('even');
-	$('#total-motif tr:odd').addClass('odd');
-	$('#motif-table').append(item.table);
-	$('#motif-table tr:even').addClass('even');
-	$('#motif-table tr:odd').addClass('odd');
-      });
-      $('#status').append("<li><b>CML generated!</b></li>");
-      $('#status').append("<li><b>FLM generated!</b></li>");
+      if(msg == "NOT_YET")
+      {
+	$('#status').append("<li><b><font color='#0000FF'>Result is not yet ready. Please come back again later. Thanks!!</font></b></li>");
+      } else {
+	var json = eval(msg);
+	$.each(json, function(i, item){
+	  $('#total-motif').append(item.total);
+	  $('#total-motif tr:even').addClass('even');
+	  $('#total-motif tr:odd').addClass('odd');
+	  $('#motif-table').append(item.table);
+	  $('#motif-table tr:even').addClass('even');
+	  $('#motif-table tr:odd').addClass('odd');
+	});
+	$('#status').append("<li><b>CML generated!</b></li>");
+	$('#status').append("<li><b>FLM generated!</b></li>");
+      }
       $('#load').empty();
     }
   });

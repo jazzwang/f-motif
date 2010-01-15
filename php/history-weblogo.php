@@ -4,9 +4,12 @@
    */
 
   $path	    = str_replace("/php","",getcwd());
-  $input    = fopen($path . "/output/" . $_POST["id"] . ".png","r") || die("ERROR");
-  if($input)
+  $file	    = $path . "/output_image/" . $_POST["id"] . ".png";
+  if(file_exists($file))
   {
+    $input    = fopen($file ,"r") || die("ERROR");
     echo "OK";
+  } else {
+    echo "ERROR";
   }
 ?>

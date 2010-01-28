@@ -15,6 +15,7 @@ public class MotifFinderV6_5 {
     querydata Data = new querydata();
     boolean flag = false;
     boolean Absoluteflag = false;
+    boolean Repeatfilterflag = false; 
     Vector SequenceSet;
     Vector<String> SequenceRule;
     Vector<Integer> MatchRuleNum;
@@ -28,6 +29,8 @@ public class MotifFinderV6_5 {
     static private int MinClusterNum;
     static private int Frequecny;
     static private double posT;
+    static private double pvalue;
+    static private double significance;
     static private double Mvalue;
     static private String Background;
     static private String EncodingMethod;
@@ -60,7 +63,7 @@ public class MotifFinderV6_5 {
        querydata data = new querydata();
        data.shift = "";
        MotifFinderV6_5 SeqDatapool = new MotifFinderV6_5(data);
-        if(args.length >= 8)
+        if(args.length >= 10)
         {
 
             SeqDatapool.PostiveFinName = args[0];
@@ -96,16 +99,25 @@ public class MotifFinderV6_5 {
 	    } else {
 		SeqDatapool.Absoluteflag = Boolean.FALSE;
 	    }
+	    Flaftemp = args[7];
+	    if (Flaftemp.equals("1")){
+			SeqDatapool.Repeatfilterflag = Boolean.TRUE;
+		} else {
+			SeqDatapool.Repeatfilterflag = Boolean.FALSE;
+		}
 
-            SeqDatapool.posT = Double.parseDouble(args[7]);
+            SeqDatapool.posT = Double.parseDouble(args[8]);
 	    //SeqDatapool.posT = 15;
             
             SeqDatapool.Mvalue = 1.5*SeqDatapool.MinMatchNum;
          } else {
-              System.out.print("java MotifFinderV5 INPUT_FILENAME BACKGROUND_FILENAME [[PCM|PWM|BIN]] FREQUENCY MATCH_NUMBER MINGROUPSIZE [Absoluteflag[1|0]] Threshold_T\n");
+              System.out.print("java MotifFinderV5 INPUT_FILENAME BACKGROUND_FILENAME [[PCM|PWM|BIN]] FREQUENCY MATCH_NUMBER MINGROUPSIZE [Absoluteflag[1|0]] [Repeatfilterflag[1|0]] Threshold_T significance\n");
               return;
-         }   
-		       
+         }
+        SeqDatapool.significance = Double.parseDouble(args[9]);
+        if (SeqDatapool.significance >= 0.0||Double.isNaN(SeqDatapool.significance)||Double.isInfinite(SeqDatapool.significance) ){SeqDatapool.significance = 1.0E-0;}
+       
+        SeqDatapool.pvalue = Math.log10(SeqDatapool.significance)*-1; 
 		SeqDatapool.start(SeqDatapool.Frequecny);
          
     }
@@ -170,7 +182,8 @@ public class MotifFinderV6_5 {
                 SequenceSet = new Vector();
 
                 backgroundSet = new Vector();
-
+                RemoveRepeat filter = new RemoveRepeat();
+                
                 String readtemp;
                 int count = 0;
                 int centerAA[] = new int[aaMap.length];
@@ -185,6 +198,13 @@ public class MotifFinderV6_5 {
 
                 }
                 PostiveFin.close();
+                if (Repeatfilterflag){
+                	GroupNumOut.print("From,"+SequenceSet.size()+",");
+                	System.out.print(SequenceSet.size()+"remove repeat");
+                	filter.start(SequenceSet);
+                	GroupNumOut.println(SequenceSet.size()+",");
+                	System.out.println(SequenceSet.size());
+                }
                 centerReg = "";
                 for(int i = 0; i <aaMap.length;i++){
                 	if (centerAA[i]!= 0){
@@ -198,6 +218,15 @@ public class MotifFinderV6_5 {
                     backgroundSet.addElement(backgroundFin.readLine());
                 }
                 backgroundFin.close();
+                if (Repeatfilterflag){
+                	
+                	GroupNumOut.print("From,"+backgroundSet.size()+",");
+                	System.out.print(backgroundSet.size()+"remove repeat");
+                	filter.start(backgroundSet);
+                	GroupNumOut.println(backgroundSet.size()+",");
+                	System.out.println(backgroundSet.size());
+                }
+                
                 Encoding pssmencoder;
                 switch(Encotype){
                 	case 0:
@@ -460,7 +489,7 @@ public class MotifFinderV6_5 {
 		                }else if(GoodMotifSize <= 0 && clusterNum <= 1){
 //		                	System.out.println("Last Motif Match less than "+MinMatchNum+" sequences !");
 		                	flag = false;
-		                }
+		                }	                
 		                else{
 		                	//System.out.println("Strongest Motif Match less than "+MinMatchNum+" sequences !");
 		                	if (BadMotifSize == (clusterNum - SmallclusterNum) ||  RemovedNum == 0){
@@ -468,6 +497,10 @@ public class MotifFinderV6_5 {
 		                	}
 
 		                }
+		                if(RemovedNum == 0 && clusterNum <= 1){
+//		                	System.out.println("Last Motif Match less than "+MinMatchNum+" sequences !");
+		                	UniformClusterFlag = true;
+		                }	
 
 
 
@@ -512,7 +545,7 @@ public class MotifFinderV6_5 {
 
 				 while (key.hasNext()){
 					 	String Temp = (String)key.next();
-	                	double MotifScoreTemp = MotifScore(Temp,ppmencoder);
+	                	double MotifScoreTemp = MotifScore(Temp,ppmencoder,pvalue);
 	                	int MotifMatchTimesTemp = CountMotif(SequenceSet,Temp);
 	                	if (MotifScoreTemp > MaxMotifScore){
 	                		MaxScoreMotif = Temp;
@@ -540,29 +573,34 @@ public class MotifFinderV6_5 {
                 Map<String, Integer> FinalMotifForgroundSizes =   new HashMap<String, Integer>();
                 Map<String, Integer> FinalMotifBMatchTimes =   new HashMap<String, Integer>();
                 Vector<String> FinalTotalMotifs = new Vector<String>();
-
-                FinalTotalMotifs.add(MaxScoreMotif);
-                FinalMotifScores.put(MaxScoreMotif,MotifScore(MaxScoreMotif ,ppmencoder));
-                FinalMotifbackgroundSizes.put(MaxScoreMotif,backgroundSet.size());
-                FinalMotifForgroundSizes.put(MaxScoreMotif,SequenceSet.size());
-                FinalMotifFMatchTimes.put(MaxScoreMotif, RemoveMotif(SequenceSet,MaxScoreMotif));
-                FinalMotifBMatchTimes.put(MaxScoreMotif, RemoveMotif(backgroundSet,MaxScoreMotif));
-                FinalMotifTimes.put(MaxScoreMotif, (Integer)MotifTimes.get(MaxScoreMotif));
-                TotalMotifs.remove(MaxScoreMotif);
-
-                String num = String.format("%2.5f", (FinalMotifBMatchTimes.get(MaxScoreMotif) *100.0)/FinalMotifbackgroundSizes.get(MaxScoreMotif) );
-            	String score = String.format("%2.5f",FinalMotifScores.get(MaxScoreMotif) );
-            	String MatchTimes = String.format("%3d/%3d", FinalMotifFMatchTimes.get(MaxScoreMotif),FinalMotifForgroundSizes.get(MaxScoreMotif));
-            	String Times = String.format("%3d", FinalMotifTimes.get(MaxScoreMotif));
-            	System.out.println(MaxScoreMotif+":"+MatchTimes+"X"+Times+" :: "+num+"% Motif Score = "+score);
-            	GroupNumOut.println(MaxScoreMotif+":"+MatchTimes+"X"+Times+" :: "+num+"% Motif Score = "+score);
-            	FinalMotifList.println(MaxScoreMotif);
-                flag = true;
+                double MxaMotifsScoreTemp1 = MotifScore(MaxScoreMotif ,ppmencoder,pvalue);
+                if( MxaMotifsScoreTemp1 > pvalue){
+	                FinalTotalMotifs.add(MaxScoreMotif);
+	                FinalMotifScores.put(MaxScoreMotif, MxaMotifsScoreTemp1);
+	                FinalMotifbackgroundSizes.put(MaxScoreMotif,backgroundSet.size());
+	                FinalMotifForgroundSizes.put(MaxScoreMotif,SequenceSet.size());
+	                FinalMotifFMatchTimes.put(MaxScoreMotif, RemoveMotif(SequenceSet,MaxScoreMotif));
+	                FinalMotifBMatchTimes.put(MaxScoreMotif, RemoveMotif(backgroundSet,MaxScoreMotif));
+	                FinalMotifTimes.put(MaxScoreMotif, (Integer)MotifTimes.get(MaxScoreMotif));
+	                TotalMotifs.remove(MaxScoreMotif);
+	
+	                String num = String.format("%2.5f", (FinalMotifBMatchTimes.get(MaxScoreMotif) *100.0)/FinalMotifbackgroundSizes.get(MaxScoreMotif) );
+	            	String score = String.format("%2.5f",FinalMotifScores.get(MaxScoreMotif) );
+	            	String MatchTimes = String.format("%3d/%3d", FinalMotifFMatchTimes.get(MaxScoreMotif),FinalMotifForgroundSizes.get(MaxScoreMotif));
+	            	String Times = String.format("%3d", FinalMotifTimes.get(MaxScoreMotif));
+	            	System.out.println(MaxScoreMotif+":"+MatchTimes+"X"+Times+" :: "+num+"% Motif Score = "+score);
+	            	GroupNumOut.println(MaxScoreMotif+":"+MatchTimes+"X"+Times+" :: "+num+"% Motif Score = "+score);
+	            	FinalMotifList.println(MaxScoreMotif);
+	                flag = true;
+                }else{
+                	System.out.println("No High score Motif");
+                	flag = false;
+                }
                while(flag){
             	   String FinalMotifs = null;
 
 
-            	   double MaxScore = 0.0;
+            	   double MaxScore = pvalue;
             	   int MaxMatchTimes = 0;
             	   ppmencoding encoder = new ppmencoding(Data, SequenceSet , backgroundSet);
             	   //encoder.SetCenterAsZero();
@@ -571,15 +609,15 @@ public class MotifFinderV6_5 {
      				 while (value.hasNext()) {
      					String MotifsTemp = (String)value.next();
      					int MotifMatchTimesTemp = CountMotif(SequenceSet,MotifsTemp);
-     					double MxaMotifsScoreTemp = MotifScore(MotifsTemp,encoder);
+     					double MxaMotifsScoreTemp2 = MotifScore(MotifsTemp,encoder,pvalue);
      					if (MotifMatchTimesTemp >= MinMatchNum2){
-	     					if (MxaMotifsScoreTemp > MaxScore){
-	     						MaxScore = MxaMotifsScoreTemp;
+	     					if (MxaMotifsScoreTemp2 > MaxScore){
+	     						MaxScore = MxaMotifsScoreTemp2;
 	     						FinalMotifs = MotifsTemp;
 	     						MaxMatchTimes = MotifMatchTimesTemp;
-	     					}else if(MxaMotifsScoreTemp == MaxScore){
+	     					}else if(MxaMotifsScoreTemp2 == MaxScore){
 	     						if (MaxMatchTimes < MotifMatchTimesTemp){
-		     						MaxScore = MxaMotifsScoreTemp;
+		     						MaxScore = MxaMotifsScoreTemp2;
 		     						FinalMotifs = MotifsTemp;
 		     						MaxMatchTimes = MotifMatchTimesTemp;
 	     						}
@@ -597,10 +635,10 @@ public class MotifFinderV6_5 {
      	                FinalMotifBMatchTimes.put(FinalMotifs, RemoveMotif(backgroundSet,FinalMotifs));
      	                FinalMotifTimes.put(FinalMotifs, (Integer)MotifTimes.get(FinalMotifs));
      	                TotalMotifs.remove(FinalMotifs);
-     	                 num = String.format("%2.5f", (FinalMotifBMatchTimes.get(FinalMotifs) *100.0)/FinalMotifbackgroundSizes.get(FinalMotifs) );
-	                	 score = String.format("%2.5f",FinalMotifScores.get(FinalMotifs) );
-	                	 MatchTimes = String.format("%3d/%3d", FinalMotifFMatchTimes.get(FinalMotifs),FinalMotifForgroundSizes.get(FinalMotifs));
-	                	 Times = String.format("%3d", FinalMotifTimes.get(FinalMotifs));
+     	                String num = String.format("%2.5f", (FinalMotifBMatchTimes.get(FinalMotifs) *100.0)/FinalMotifbackgroundSizes.get(FinalMotifs) );
+	     	            String score = String.format("%2.5f",FinalMotifScores.get(FinalMotifs) );
+	     	            String MatchTimes = String.format("%3d/%3d", FinalMotifFMatchTimes.get(FinalMotifs),FinalMotifForgroundSizes.get(FinalMotifs));
+	     	            String Times = String.format("%3d", FinalMotifTimes.get(FinalMotifs));
 	                	System.out.println(FinalMotifs+":"+MatchTimes+"X"+Times+" :: "+num+"% Motif Score = "+score);
 	                	GroupNumOut.println(FinalMotifs+":"+MatchTimes+"X"+Times+" :: "+num+"% Motif Score = "+score);
 	                	FinalMotifList.println(FinalMotifs);
@@ -705,19 +743,24 @@ public class MotifFinderV6_5 {
 
     	}
     }
-    public double MotifScore (String Motif , ppmencoding encoder) {
+    public double MotifScore (String Motif , ppmencoding encoder,double P) {
     	double Score = 0.0;
     	String[] pre = Motif.split("\\[[A-Z]+\\]");
     	char MotifCharTemp ;
     	int shift = 0;
-
+    	double residue = 0;
+    	Boolean flag = false;
     	if( pre.length == 2){
 
 	    	for (int q = 0; q < pre.length ;q++) {
 	    		for (int p = pre[q].length()-1; p >= 0 ;p--) {
 	    			MotifCharTemp = pre[q].charAt(p);
 	    			if ( MotifCharTemp != '.'){
-	    				Score += encoder.Pssm[encoder.change[MotifCharTemp]][p+shift];
+	    				residue = encoder.Pssm[encoder.change[MotifCharTemp]][p+shift];
+	    				if (residue < P){flag = true;}
+	    				Score += residue;
+	    				
+	    				
 	    			}
 
 	    		}
@@ -728,13 +771,15 @@ public class MotifFinderV6_5 {
 	    		for (int p =Motif.length()-1; p >= 0 ;p--) {
 	    			MotifCharTemp = Motif.charAt(p);
 	    			if ( MotifCharTemp != '.'&& p != half){
-	    				Score += encoder.Pssm[encoder.change[MotifCharTemp]][p];
+	    				residue = encoder.Pssm[encoder.change[MotifCharTemp]][p+shift];
+	    				if (residue < P){flag = true;}
+	    				Score += residue;
 	    			}
 	    		}
 
 
     	}
-
+    	if(flag){Score = 0;}
     	return Score;
     }
     public boolean  ifMotifinSamePosition (String Master,String Slave) {

@@ -113,13 +113,15 @@ function process(input)
   $('#load').append("<center><img src='image/loading.gif'><br/><br/>"
 		  + "<b><font color='#ff0000'>Your Request is still processing<br/>in background ....<br/></font></b></center>");
 
-  var background = $('#background').val();
-  var encode	 = $('#encode').val();
-  var freq	 = $('#freq').val();
-  var match	 = $('#match').val();
-  var cluster	 = $('#cluster').val();
-  var flat	 = $('#flat').val();
-  var threshold	 = $('#threshold').val();
+  var background    = $('#background').val();
+  var encode	    = $('#encode').val();
+  var freq	    = $('#freq').val();
+  var match	    = $('#match').val();
+  var cluster	    = $('#cluster').val();
+  var flat	    = $('#flat').val();
+  var threshold	    = $('#threshold').val();
+  var repeat	    = $('#repeat').val();
+  var significance  = $('#significance').val();
 
   $.ajax({
     url:          "php/weblogic.php",
@@ -142,7 +144,7 @@ function process(input)
   $.ajax({
     url:          "php/motif.php",
     type:         "POST",
-    data:         "input=" + input + "&background=" + background + "&encode=" + encode + "&freq=" + freq + "&match=" + match + "&cluster=" + cluster + "&flat=" + flat + "&threshold=" + threshold,
+    data:         "input=" + input + "&background=" + background + "&encode=" + encode + "&freq=" + freq + "&match=" + match + "&cluster=" + cluster + "&flat=" + flat + "&repeat" + repeat + "&threshold=" + threshold + "&significance=" + significance,
     success:      function(msg)
     {
       //$('#status').append("<li><b><a href='output/" + msg + "' target='_blank'>1st stage analysis</a> finished!</b></li>");

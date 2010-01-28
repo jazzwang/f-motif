@@ -9,7 +9,7 @@
   $threshold  = $_POST["threshold"];
   $path  = str_replace("/php","",getcwd());
   chdir($path);
-  $cmd	  = $path . "/motif.sh " . $input . " " . $background . " " . $encode . " " . $freq . " " . $match . " " . $cluster . " " . $flat . " " . $threshold;
+  $cmd	  = $path . "/motif.sh " . $input . " " . $background . " " . $encode . " " . $freq . " " . $match . " " . $cluster . " " . $flat . " " . $repeat . " " . $threshold . " " . $significance;
   system($cmd, $ret);
   if($ret == 0)
   {

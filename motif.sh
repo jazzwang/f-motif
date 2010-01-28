@@ -1,3 +1,3 @@
 #!/bin/bash
-java -cp . fmotif.MotifFinderV6_5 $1.txt $2 $3 $4 $5 $6 $7 $8 > ./output/$1.txt 2>&1
-echo "[{ input : \"$1.txt\", \"$2\", \"$3\", \"$4\", \"$5\", \"$6\", \"$7\", \"$8\"}]" > ./output/$1.json
+java -cp . fmotif.MotifFinderV6_5 $1.txt $2 $3 $4 $5 $6 $7 $8 $9 ${10} > ./output/$1.txt 2>&1
+echo "[{ input : \"$1.txt\", \"$2\", \"$3\", \"$4\", \"$5\", \"$6\", \"$7\", \"$8\", \"$9\", \"${10}\"}]" > ./output/$1.json

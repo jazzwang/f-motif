@@ -100,7 +100,7 @@ if($id != "")
 	      <tr><td><b> 8. Choose <i>T</i> to define potential conserved position:</b></td>
 		<td><select id="threshold" name="threshold"/>
 		</select></td></tr>
-              <tr><td><b> 9. Number of Significance: </b></td>
+              <tr><td><b> 9. Significance (0~1): </b></td>
 		  <td><input id="significance" name="significance" value="0.000001"/>
 		  </td></tr>
 	      <tr id="submit"><td><h2>Then click the submit button.</h2></td><td><input type="button" onclick="upload()" value="Submit"></td></tr>

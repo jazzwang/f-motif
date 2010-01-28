@@ -14,7 +14,6 @@ weblogo:
 build:	weblogo
 	@javac -cp . fmotif/MotifFinderV6_5.java
 	@chown -R www-data:www-data *
-	@chown -R www-data:www-data .*
 
 clean:
 	@rm fmotif/*.class

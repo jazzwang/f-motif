@@ -154,7 +154,7 @@ function process(input)
 
   if($('#encode').val() == "BIN")
   {
-    $('#status').append("<li><b><font color='#00FF00'>Now, it's safe to close your browser!</font></b></li>");
+    $('#status').append("<li><b><font color='#0000FF'>Now, it's safe to close your browser!</font></b></li>");
     $('#load').empty();
   }
 }

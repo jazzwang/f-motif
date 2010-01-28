@@ -144,7 +144,7 @@ function process(input)
   $.ajax({
     url:          "php/motif.php",
     type:         "POST",
-    data:         "input=" + input + "&background=" + background + "&encode=" + encode + "&freq=" + freq + "&match=" + match + "&cluster=" + cluster + "&flat=" + flat + "&repeat" + repeat + "&threshold=" + threshold + "&significance=" + significance,
+    data:         "input=" + input + "&background=" + background + "&encode=" + encode + "&freq=" + freq + "&match=" + match + "&cluster=" + cluster + "&flat=" + flat + "&repeat=" + repeat + "&threshold=" + threshold + "&significance=" + significance,
     success:      function(msg)
     {
       //$('#status').append("<li><b><a href='output/" + msg + "' target='_blank'>1st stage analysis</a> finished!</b></li>");

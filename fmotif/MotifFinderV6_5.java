@@ -115,7 +115,7 @@ public class MotifFinderV6_5 {
               return;
          }
         SeqDatapool.significance = Double.parseDouble(args[9]);
-        if (SeqDatapool.significance >= 0.0||Double.isNaN(SeqDatapool.significance)||Double.isInfinite(SeqDatapool.significance) ){SeqDatapool.significance = 1.0E-0;}
+        if (SeqDatapool.significance >= 1.0||SeqDatapool.significance < 0.0||Double.isNaN(SeqDatapool.significance)||Double.isInfinite(SeqDatapool.significance) ){SeqDatapool.significance = 1.0E-0;}
        
         SeqDatapool.pvalue = Math.log10(SeqDatapool.significance)*-1; 
 		SeqDatapool.start(SeqDatapool.Frequecny);

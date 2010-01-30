@@ -115,8 +115,9 @@ public class MotifFinderV6_5 {
               return;
          }
         SeqDatapool.significance = Double.parseDouble(args[9]);
-        if (SeqDatapool.significance >= 1.0||SeqDatapool.significance < 0.0||Double.isNaN(SeqDatapool.significance)||Double.isInfinite(SeqDatapool.significance) ){SeqDatapool.significance = 1.0E-0;}
        
+        if (SeqDatapool.significance > 1.0||SeqDatapool.significance < 0.0||Double.isNaN(SeqDatapool.significance)||Double.isInfinite(SeqDatapool.significance) ){SeqDatapool.significance = 1.0E-0;}
+        
         SeqDatapool.pvalue = Math.log10(SeqDatapool.significance)*-1; 
 		SeqDatapool.start(SeqDatapool.Frequecny);
          
@@ -556,7 +557,13 @@ public class MotifFinderV6_5 {
 	                			MaxScoreMotif = Temp;
 		                		MaxMotifScore = MotifScoreTemp;
 		                		MaxMotifTimes = MotifMatchTimesTemp;
-	                		}
+	                		}else if (MotifMatchTimesTemp == MaxMotifTimes){
+     							if (Math.random()<0.5){
+     								MaxScoreMotif = Temp;
+    		                		MaxMotifScore = MotifScoreTemp;
+    		                		MaxMotifTimes = MotifMatchTimesTemp;
+     							}
+     						}
 	                	}
 	                	String printScore = String.format("%2.2f",MotifScoreTemp );
 	                	System.out.println(Temp+":"+MotifMatchTimesTemp+"::"+(Integer)MotifTimes.get(Temp));
@@ -620,9 +627,17 @@ public class MotifFinderV6_5 {
 		     						MaxScore = MxaMotifsScoreTemp2;
 		     						FinalMotifs = MotifsTemp;
 		     						MaxMatchTimes = MotifMatchTimesTemp;
+	     						}else if (MaxMatchTimes == MotifMatchTimesTemp){
+	     							if (Math.random()<0.5){
+	     								MaxScore = MxaMotifsScoreTemp2;
+			     						FinalMotifs = MotifsTemp;
+			     						MaxMatchTimes = MotifMatchTimesTemp;
+	     							}
 	     						}
 	     					}
 
+     					}else{
+     						value.remove();
      					}
 
      				 }

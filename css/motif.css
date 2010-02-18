@@ -1,9 +1,9 @@
 #tabs-1 b    { color: #3333CC; }
-#motif-table { border: 5px; border-collapse: collapse; border-color: #000000; width: 580px; text-align: center; font-size: 105%; padding: 5px; table-layout:fixed; word-wrap:break-word; }
+#motif-table { border: 5px; border-collapse: collapse; border-color: #000000; width: 630px; text-align: center; font-size: 105%; padding: 5px; table-layout:fixed; word-wrap:break-word; }
 #motif-table th { background-color: #E6E6FF; padding: 5px; vertical-align: vertical-align; }
 #motif-table tr.even td { background-color: #E6E6FF; padding: 5px; }
 #motif-table tr.odd  td { background-color: #F4F7FB; padding: 5px; }
-#total-motif { border: 5px; border-collapse: collapse; border-color: #000000; width: 580px; text-align: center; font-size: 105%; padding: 5px; table-layout:fixed; word-wrap:break-word; }
+#total-motif { border: 5px; border-collapse: collapse; border-color: #000000; width: 630px; text-align: center; font-size: 105%; padding: 5px; table-layout:fixed; word-wrap:break-word; }
 #total-motif th { background-color: #E6E6FF; padding: 5px; vertical-align: vertical-align; }
 #total-motif tr.even td { background-color: #E6E6FF; padding: 5px; }
 #total-motif tr.odd  td { background-color: #F4F7FB; padding: 5px; }

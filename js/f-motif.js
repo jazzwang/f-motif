@@ -59,8 +59,8 @@ function init()
   $('#motif-table').empty();
   $('#status').empty();
 
-  $('#motif-table').append("<tr><th>Motif Pattern</th><th>Match / Total</th><th>Hit Freq.</th><th>Background Match</th><th>Motif score</th><th>Matched Sequence</th></tr>");
-  $('#total-motif').append("<tr><th>Motif Pattern</th><th>Forground Match</th><th>Hit Freq.</th><th>Matched Sequence</th></tr>");
+  $('#motif-table').append("<tr><th width='30'>#</th><th>Motif Pattern</th><th>Match / Total</th><th width='50'>Hit Freq.</th><th>Background Match</th><th>Motif score</th><th>Matched Sequence</th></tr>");
+  $('#total-motif').append("<tr><th width='30'>#</th><th>Motif Pattern</th><th>Forground Match</th><th width='50'>Hit Freq.</th><th>Matched Sequence</th></tr>");
 }
 
 function upload()

@@ -132,6 +132,7 @@ function process(input)
       $('#weblogo').append("<p>[[ <a href='output_image/" + msg + "' target='_blank'>Download weblogo result</a> ]] - [[ <a href='input/" + input + "' target='_blank'>Source Input</a> ]]</p>");
       $('#weblogo').append("<img src='output_image/" + msg + "'>");
       $('#status').append("<li><b>WebLogo generated!</b></li>");
+      $("#tabs").tabs("select",1);
     }
   });
 
@@ -178,6 +179,7 @@ function analysis(input)
       });
       $('#status').append("<li><b>CML generated!</b></li>");
       $('#status').append("<li><b>FLM generated!</b></li>");
+      $("#tabs").tabs("select",2);
       $('#load').empty();
     }
   });

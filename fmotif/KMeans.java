@@ -70,7 +70,7 @@ public class KMeans {
 			int count = 1;
 			
 			while (UpdateMeansState && state == 0){
-				if (rerunLimit == 0){
+				if (rerunLimit <= 0) {
 						System.out.println("\nHit re run Limit!!");state = -1 ;rerunLimit--;
 					}
 				ReCluster();

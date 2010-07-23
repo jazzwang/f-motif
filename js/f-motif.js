@@ -15,7 +15,7 @@ $(function() {
     buttons: { Ok: function() {	$(this).dialog('close'); } }
   });
   // 只有載入時產生 match 下拉式選單的値(M)
-  for ( i=30; i<=60; i++)
+  for ( i=20; i<=60; i++)
   {
     if(i==60) {
       $("#match").append("<option value='"+i+"' selected>"+i+"</option>");

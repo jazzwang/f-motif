@@ -15,9 +15,9 @@ $(function() {
     buttons: { Ok: function() {	$(this).dialog('close'); } }
   });
   // 只有載入時產生 match 下拉式選單的値(M)
-  for ( i=15; i<=40; i++)
+  for ( i=30; i<=60; i++)
   {
-    if(i==20) {
+    if(i==60) {
       $("#match").append("<option value='"+i+"' selected>"+i+"</option>");
     } else {
       $("#match").append("<option value='"+i+"'>"+i+"</option>");
@@ -34,9 +34,9 @@ $(function() {
     value = $('#match').val();
     $('#cluster').empty();
     $('#threshold').empty();
-    for ( j=10; j<=value; j++)
+    for ( j=30; j<=value; j++)
     {
-      if(j==10) {
+      if(j==30) {
 	$("#cluster").append("<option value='"+j+"' selected>"+j+"</option>");
 	$("#threshold").append("<option value='"+j+"' selected>"+j+"</option>");
       } else {

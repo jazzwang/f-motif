@@ -13,6 +13,7 @@ public class KMeans {
 	int Dim;
 	double ClusterMeans[][];//K X dim
 	double DataPoints[][];//DataNum X dim
+	double centerprecition = Math.pow(10, -10);
 	int lableDataPoints[];//DataNum
 	int RroupNum[];
 	Vector[] kcluster;
@@ -67,14 +68,20 @@ public class KMeans {
 			while (CheckGroup(miniGroupsize)&&Iteration < initLimit){InitKMeans();Iteration++;}
 			if (Iteration >= initLimit){state = -1;System.out.println("\nLimit!");}
 	        boolean UpdateMeansState = UpdateMeans();
-			int count = 1;
+			long count = 1;
 			
 			while (UpdateMeansState && state == 0){
-				if (rerunLimit <= 0) {
+				if (rerunLimit <= 0){
 						System.out.println("\nHit re run Limit!!");state = -1 ;rerunLimit--;
 					}
 				ReCluster();
-				System.out.print("_");
+				
+				
+					System.out.print("_");
+				
+				if(count % 1000 == 0){
+					System.out.println();
+				}
 				Iteration = 0;
 				while (CheckGroup(miniGroupsize)&& state == 0){
 					rerunLimit--;
@@ -185,23 +192,30 @@ public class KMeans {
 
 	public void ReCluster(){
 		//System.out.println("Clustering");
-
-		double Distence[] = new double[KNum];
 		for (int j = 0 ; j < KNum; j++){
 			RroupNum[j] = 0;
 		}
-
-		for (int i = 0 ; i < DataNum; i++ ){
-
+		//ClassTable(int th,int ini, int end ,double DataPoints1[][],double ClusterMeans1[][],int lableDataPoints1[],int RroupNum1[])
+		ClassTable Ct = new ClassTable(4,0,DataNum ,DataPoints, ClusterMeans,lableDataPoints,RroupNum);
+		Ct.todo();
+		
+			
+		/*
+		double Distence[] = new double[KNum];
+		
+    	for (int i = 0 ; i < DataNum; i++ ){
+			double mindis = Double.MAX_VALUE;
 			for (int j = 0 ; j < KNum; j++){
 				Distence[j] = Euclideandistance( DataPoints[i],ClusterMeans[j]);
+				if (mindis >= Distence[j]){
+					mindis = Distence[j];
+					lableDataPoints[i] = j;
+				}
 			}
-
-			lableDataPoints[i] = Selection_sort(Distence)[0];
 			RroupNum[lableDataPoints[i]]++;
 		}
-
-
+*/
+		//System.out.println("Clustering");
 
 	}
 	public boolean CheckGroup(int min){
@@ -231,7 +245,7 @@ public class KMeans {
 		for (int i = 0 ; i < KNum; i++ ){
 			for (int j = 0 ; j < Dim; j++){
 				OldMeans[i][j] = ClusterMeans[i][j] ;
-				ClusterMeans[i][j] = 0;
+				ClusterMeans[i][j] = 0.0;
 			}
 
 		}
@@ -263,12 +277,12 @@ public class KMeans {
 	     //sumofsquarederror = b.divide(one,32,BigDecimal.ROUND_FLOOR).doubleValue();//
 
 	     boolean state = false;
-	     if (sumofsquarederror <= 0.0 ){
+	     if (sumofsquarederror <= centerprecition ){
 	    	 state = false;
 	     }else{
 	    	 state = true;
 	     }
-
+	     //System.out.println(sumofsquarederror);
 
 
 		return state;
@@ -397,23 +411,23 @@ public class KMeans {
 	public static void main(String[] args) {
 
 		Vector data = new Vector();
-		int i = 100;
+		int i = 500000;
 		while(i-- > 0){
 			double one[] = new double[2];
-			one[0] = 1;
+			one[0] = Math.random();
 			one[1] = Math.random();
 			data.add(one);
 
 		}
-		i = 100;
+		/*i = 1000;
 		while(i-- > 0){
 			double one[] = new double[2];
-			one[0] = 1;
+			one[0] = Math.random();
 			one[1] = Math.random();
 			data.add(one);
 
 		}
-               /* 
+                
 		i = 100000;
 		while(i-- > 0){
 			double one[] = new double[2];
@@ -435,7 +449,7 @@ public class KMeans {
 
 
 
-		KMeans aaa = new KMeans(data , 10);
+		KMeans aaa = new KMeans(data , 4);
 		aaa.RunKMeans();
 		aaa.PrintMeans();
 
@@ -477,7 +491,7 @@ public class KMeans {
 
         set[position]++;
 
-        // �վ�k�䤸��
+        // 調整右邊元素
         for(int i = position + 1; i < set.length; i++)
             set[i] = set[i-1] + 1;
 

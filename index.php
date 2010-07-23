@@ -58,7 +58,8 @@ if($id != "")
 	      <tr id="samples"><td>1.1 Select a sample file:</td><td>
 		<select id="sample" name="sample">
 		  <option></option>
-		  <option value="nbt1146-S6.txt">Nature bio-tech data</option>
+		  <option value="nbt1146-S6.txt">Nature bio-tech data (four kinase substrates)</option>
+		  <option value="nbt1146-S5_s2.txt">Nature bio-tech data (synthetic peptides)</option>
 		  <option value="Seq_positive_ALL_CDK_S_13_phosphoELM_1208.txt">CDK - ALL</option>
 		  <option value="Seq_positive_ALL_CK2_S_13_phosphoELM_1208.txt">CK2 - ALL</option>
 		  <option value="Seq_positive_ALL_PKA_S_13_phosphoELM_1208.txt">PKA - ALL</option>
@@ -69,12 +70,14 @@ if($id != "")
 		  <option value="Seq_positive_Homo-sapiens_PKA_S_13_phosphoELM_1208.txt">PKA - Homo</option>
 		  <option value="Seq_positive_Homo-sapiens_PKC_S_13_phosphoELM_1208.txt">PKC - Homo</option>
 		  <option value="Seq_positive_Homo-sapiens_4-Kinases_S_13_phosphoELM_1208.txt">4 Kinases - Homo</option>
+		  <option value="pr800599n_11_S_N.txt">Mouse mass spectrometry data</option>
 		</select></td></tr>
 	      <tr id="uploads"><td>1.2 Upload a text file:  </td><td><input type="file" id="fgdata_file" name="fgdata_file" value=""/></td></tr>
 	      <tr><td><b> 2. Choose the Background Type:</b></td><td>
 		<select id="background" name="background">
-		  <option value="ELM_1208_backgroundset_S_13.txt" >All Species - S</option>
-		  <option value="ELM_1208_Homo-sapiens_backgroundset_S_13.txt" >Human only - S</option>
+		  <option value="ELM_1208_backgroundset_S_13.txt">All Species - S</option>
+		  <option value="ELM_1208_Homo-sapiens_backgroundset_S_13.txt">Human only - S</option>
+		  <option value="ipi.MOUSE.v3.71.fasta_S_N_s.txt">Mouse</option>
 		</select></td></tr>
 	      <tr><td><b> 3. Choose an Encoding Method:</b></td><td>
 		<select id="encode" name="encode">

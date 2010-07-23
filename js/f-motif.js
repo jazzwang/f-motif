@@ -34,7 +34,7 @@ $(function() {
     value = $('#match').val();
     $('#cluster').empty();
     $('#threshold').empty();
-    for ( j=30; j<=value; j++)
+    for ( j=15; j<=value; j++)
     {
       if(j==30) {
 	$("#cluster").append("<option value='"+j+"' selected>"+j+"</option>");

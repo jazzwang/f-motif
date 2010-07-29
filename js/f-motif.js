@@ -301,7 +301,7 @@ function show_result(id)
       $('#repeat_s').append((item.repeat)?"Disable":"Enable");
       $('#threshold_s').append(item.threshold);
       $('#significance_s').append(item.significance);
-      $('#status').append("<li><b>It takes " + item.time + " seconds!</b></li>");
+      $('#status').append("<li><b>It takes " + parseInt(item.time / 3600) + ":" + parseInt((item.time % 3600)/60) + ":" + item.time%60 + " (" + item.time  +"s) to compute.</b></li>");
     });
   });
 }

@@ -181,6 +181,7 @@ function analysis(input)
       $('#status').append("<li><b>FLM generated!</b></li>");
       $("#tabs").tabs("select",2);
       $('#load').empty();
+      show_result(input.replace('.txt',''));
     }
   });
 }
@@ -269,6 +270,38 @@ function set_id(id)
 	$('#status').append("<li><b>FLM generated!</b></li>");
       }
       $('#load').empty();
+      show_result(id)
     }
+  });
+}
+
+function show_result(id)
+{
+  $.getJSON("output/"+id+".json",function(data){
+    var json = eval(data);
+    $.each(json, function(i, item){
+      $('#samples').remove();
+      $('#uploads').remove();
+      $('#background').remove();
+      $('#encode').remove();
+      $('#freq').remove();
+      $('#match').remove();
+      $('#cluster').remove();
+      $('#repeat').remove();
+      $('#threshold').remove();
+      $('#significance').remove();
+      $('#submit').remove();
+      
+      $('#input_file').append("<a href='input/" + id + ".txt'>" + id + ".txt</a>");
+      $('#back_file').append("<a href='input/" + item.background + "'>" + item.background + "</a>");
+      $('#encode_s').append(item.encode);
+      $('#freq_s').append(item.freq);
+      $('#match_s').append(item.match);
+      $('#cluster_s').append(item.cluster);
+      $('#repeat_s').append((item.repeat)?"Disable":"Enable");
+      $('#threshold_s').append(item.threshold);
+      $('#significance_s').append(item.significance);
+      $('#status').append("<li><b>It takes " + item.time + " seconds!</b></li>");
+    });
   });
 }

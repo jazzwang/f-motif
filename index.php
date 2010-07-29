@@ -73,38 +73,38 @@ if($id != "")
 		  <option value="pr800599n_11_S_N.txt">Mouse mass spectrometry data</option>
 		</select></td></tr>
 	      <tr id="uploads"><td>1.2 Upload a text file:  </td><td><input type="file" id="fgdata_file" name="fgdata_file" value=""/></td></tr>
-	      <tr><td><b> 2. Choose the Background Type:</b></td><td>
+	      <tr><td><b> 2. Choose the Background Type:</b></td><td id="back_file">
 		<select id="background" name="background">
 		  <option value="ELM_1208_backgroundset_S_13.txt">All Species - S</option>
 		  <option value="ELM_1208_Homo-sapiens_backgroundset_S_13.txt">Human only - S</option>
 		  <option value="ipi.MOUSE.v3.71.fasta_S_N_s.txt">Mouse</option>
 		</select></td></tr>
-	      <tr><td><b> 3. Choose an Encoding Method:</b></td><td>
+	      <tr><td><b> 3. Choose an Encoding Method:</b></td><td id="encode_s">
 		<select id="encode" name="encode">
 		  <option value="PCM">PCM</option>
 		  <option value="PWM">PWM</option>
 		  <option value="BIN">BIN</option>
 		</select></td></tr>
 -             <tr><td><b> 4. Number of Iterations (50~100):</b></td>
-		  <td><input id="freq" name="freq" value="50" onChange="check_freq();"/></td>
+		  <td id="freq_s"><input id="freq" name="freq" value="50" onChange="check_freq();"/></td>
 	      </tr>
-	      <tr><td><b> 5. Choose <i>M</i> for Identifying Motifs:</b></td><td>
+	      <tr><td><b> 5. Choose <i>M</i> for Identifying Motifs:</b></td><td id="match_s">
 		<select id="match"   name="match">
 		</select></td></tr>
-	      <tr><td><b> 6. Choose <i>G</i> to define small cluster: </b></td><td>
+	      <tr><td><b> 6. Choose <i>G</i> to define small cluster: </b></td><td id="cluster_s">
 		<select id="cluster" name="cluster">
 		</select></td></tr>
 		<input type="hidden" id="flat" name="flat" value="1">
               <tr><td><b> 7. Choose filter of repeat patterns: </b></td>
-		<td><select id="repeat" name="repeat"/>
+		<td id="repeat_s"><select id="repeat" name="repeat"/>
 		  <option value="0">Disable</option>
 		  <option value="1">Enable</option>
 		</select></td></tr>
 	      <tr><td><b> 8. Choose <i>T</i> to define potential conserved position:</b></td>
-		<td><select id="threshold" name="threshold"/>
+		<td id="threshold_s"><select id="threshold" name="threshold"/>
 		</select></td></tr>
               <tr><td><b> 9. Significance (0~1): </b></td>
-		  <td><input id="significance" name="significance" value="0.000001"/>
+		  <td id="significance_s"><input id="significance" name="significance" value="0.000001"/>
 		  </td></tr>
 	      <tr id="submit"><td><h2>Then click the submit button.</h2></td><td><input type="button" onclick="upload()" value="Submit"></td></tr>
 	    </table>

@@ -98,7 +98,7 @@ if($id != "")
               <tr><td><b> 7. Choose filter of repeat patterns: </b></td>
 		<td id="repeat_s"><select id="repeat" name="repeat"/>
 		  <option value="0">Disable</option>
-		  <option value="1">Enable</option>
+		  <option value="1" selected>Enable</option>
 		</select></td></tr>
 	      <tr><td><b> 8. Choose <i>T</i> to define potential conserved position:</b></td>
 		<td id="threshold_s"><select id="threshold" name="threshold"/>

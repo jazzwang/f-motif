@@ -1,4 +1,6 @@
 var input;
+var var_m = 60;
+var var_g = 30;
 
 $(function() {
   // 使用 jQuery UI 的 Tab 元件
@@ -14,21 +16,17 @@ $(function() {
     autoOpen: false, bgiframe: true, modal: true, 
     buttons: { Ok: function() {	$(this).dialog('close'); } }
   });
-  // 只有載入時產生 match 下拉式選單的値(M)
-  for ( i=20; i<=60; i++)
-  {
-    if(i==60) {
-      $("#match").append("<option value='"+i+"' selected>"+i+"</option>");
-    } else {
-      $("#match").append("<option value='"+i+"'>"+i+"</option>");
-    }
-  }
   // 設定 onChange Event 處理函式
   $('#fgdata_file').change(function () {
     $('#sample').val("");
   });
   $('#sample').change(function () {
     $('#fgdata_file').val("");
+    if($('#sample').val() == "pr800599n_11_S_N.txt")
+      var_m = 60;
+    else
+      var_m = 20
+    update_M();
   });
   $('#match').change(function () {
     value = $('#match').val();
@@ -36,7 +34,7 @@ $(function() {
     $('#threshold').empty();
     for ( j=15; j<=value; j++)
     {
-      if(j==30) {
+      if( j == var_g ) {
 	$("#cluster").append("<option value='"+j+"' selected>"+j+"</option>");
 	$("#threshold").append("<option value='"+j+"' selected>"+j+"</option>");
       } else {
@@ -45,8 +43,6 @@ $(function() {
       }
     }
   });
-  // 只有載入時產生 cluster,threshold 下拉式選單的初始値 (G,T)
-  $('#match').change();
   // 其他通用初始化動作
   init();
 });
@@ -304,4 +300,18 @@ function show_result(id)
       $('#status').append("<li><b>It takes " + parseInt(item.time / 3600) + ":" + parseInt((item.time % 3600)/60) + ":" + item.time%60 + " (" + item.time  +"s) to compute.</b></li>");
     });
   });
+}
+
+function update_M()
+{
+  $("#match").empty();
+  for ( i=20; i<=60; i++)
+  {
+    if(i == var_m) {
+      $("#match").append("<option value='"+i+"' selected>"+i+"</option>");
+    } else {
+      $("#match").append("<option value='"+i+"'>"+i+"</option>");
+    }
+  }
+  $('#match').change();
 }

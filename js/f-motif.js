@@ -298,7 +298,7 @@ function show_result(id)
       $('#freq_s').append(item.freq);
       $('#match_s').append(item.match);
       $('#cluster_s').append(item.cluster);
-      $('#repeat_s').append((item.repeat)?"Disable":"Enable");
+      $('#repeat_s').append((item.repeat == "0")?"Disable":"Enable");
       $('#threshold_s').append(item.threshold);
       $('#significance_s').append(item.significance);
       $('#status').append("<li><b>It takes " + parseInt(item.time / 3600) + ":" + parseInt((item.time % 3600)/60) + ":" + item.time%60 + " (" + item.time  +"s) to compute.</b></li>");

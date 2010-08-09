@@ -61,12 +61,11 @@ function init()
 
 function upload()
 {
-
-  $('#submit').remove();
-
   init();
 
   if($('#sample').val() == "" && $('#fgdata_file').val() == "") { alert("please select a forground file or choose a sample file!!"); return; }
+  
+  $('#submit').remove();
 
   if($('#fgdata_file').val() != "") {
     $.ajaxFileUpload({

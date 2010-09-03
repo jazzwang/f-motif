@@ -159,7 +159,7 @@ if($id != "")
 </div>
 <div id="download" title="Download" align="left">
   <h3>Download Data Set:</h3>
-  <p> You can download the foreground and background data sets from this <a href='input/dataset.zip' target='_blank'><font color='blue'>"Data Set Archive"</font></a></p>
+  <p> You can download the <a href='input/foregroundset.zip'>foreground</a> and <a href='input/backgroundset.zip'>background</a> data sets from this <a href='input/dataset.zip' target='_blank'><font color='blue'>"Data Set Archive"</font></a></p>
 </div>
 <div id="footer">
   <div id="footer_inner">

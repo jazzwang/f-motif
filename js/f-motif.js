@@ -19,6 +19,8 @@ $(function() {
   // 設定 onChange Event 處理函式
   $('#fgdata_file').change(function () {
     $('#sample').val("");
+    val_m = 60;
+    update_M();
   });
   $('#sample').change(function () {
     $('#fgdata_file').val("");
@@ -43,6 +45,8 @@ $(function() {
       }
     }
   });
+  $('#freq').change(function() { check_freq() });
+  $('#significance').change(function() { check_significance() });
   // 其他通用初始化動作
   init();
 });
@@ -217,15 +221,32 @@ function check_freq()
   value = $('#freq').val();
   if(IsNumeric(value))
   {
-    if( value < 50 || value > 100 )
+    if( value < 0 || value > 100 )
     {
       $('#freq').val("50");
-      alert("Please enter an number between 50 to 100, thanks!");
+      alert("Please enter an number between 1 to 100, thanks!");
     }
   } else {
     $('#freq').val("50");
-    alert("No text. Please enter an number between 50 to 100, thanks!");
+    alert("No text input. Please enter an number between 1 to 100, thanks!");
   }
+}
+
+function check_significance() 
+{
+  value = $('#significance').val();
+  if(IsNumeric(value))
+  {
+    if( value <= 0 || value > 1 )
+    {
+      $('#significance').val("0.000001");
+      alert("Please enter an number between 0 to 1, thanks!");
+    }
+  } else {
+    $('#significance').val("0.000001");
+    alert("No text input. Please enter an number between 0 to 1, thanks!");
+  }
+
 }
 
 function set_id(id)

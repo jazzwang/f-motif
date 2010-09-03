@@ -85,8 +85,8 @@ if($id != "")
 		  <option value="PWM">PWM</option>
 		  <option value="BIN">BIN</option>
 		</select></td></tr>
--             <tr><td><b> 4. Number of Iterations (50~100):</b></td>
-		  <td id="freq_s"><input id="freq" name="freq" value="50" onChange="check_freq();"/></td>
+-             <tr><td><b> 4. Number of Iterations (1~100):</b></td>
+		  <td id="freq_s"><input id="freq" name="freq" value="50"/></td>
 	      </tr>
 	      <tr><td><b> 5. Choose <i>M</i> for Identifying Motifs:</b></td><td id="match_s">
 		<select id="match"   name="match">
@@ -103,7 +103,7 @@ if($id != "")
 	      <tr><td><b> 8. Choose <i>T</i> to define potential conserved position:</b></td>
 		<td id="threshold_s"><select id="threshold" name="threshold"/>
 		</select></td></tr>
-              <tr><td><b> 9. Significance (0~1): </b></td>
+              <tr><td><b> 9. Significance [0~1): </b></td>
 		  <td id="significance_s"><input id="significance" name="significance" value="0.000001"/>
 		  </td></tr>
 	      <tr id="submit"><td><h2>Then click the submit button.</h2></td><td><input type="button" onclick="upload()" value="Submit"></td></tr>
@@ -129,30 +129,33 @@ if($id != "")
   </div>
 </div>
 <div id="annotation" title="Annotation" align="left">
-<ol><li><b>FM</b>
-  <p>This foreground data set is directly adopted from the supplementary material of a previous study (Schwartz and Gygi, 2005), which contains 298 serine-phosphorylated peptides considering the following four kinds of kinases: Ataxia Telangiectasia Mutated (ATM, 43 peptides), Casein II (184 peptides), Calcium/Calmodulin-dependent protein Kinase II (CaMK II, 41 peptides), and Mitogen-Activated Protein Kinase (MAPK, 30 peptides).</p></li>
-  <li><b>FA<sub>PKA</sub></b>
-  <p>The foreground data set considering all species with respect to PKA kinase substrates (322 serine-phosphorylated peptides)</p></li>
-  <li><b>FA<sub>PKC</sub></b>
-  <p>The foreground data set considering all species with respect to PKC kinase substrates (333 serine-phosphorylated peptides)</p></li>
-  <li><b>FA<sub>CDK</sub></b>
-  <p>The foreground data set considering all species with respect to CDK kinase substrates (213 serine-phosphorylated peptides)</p></li>
-  <li><b>FA<sub>CK2</sub></b>
-  <p>The foreground data set considering all species with respect to CK2 kinase substrates (247 serine-phosphorylated peptides)</p></li>
-  <li><b>FA<sub>COMBINED</sub></b>
-  <p>The foreground data set considering all species with respect to PKA, PKC, CDK, and CK2 kinase substrates (1115 serine-phosphorylated peptides)</p><li>
-  <li><b>FH<sub>PKA</sub></b>
+<ol><li><b>Nature bio-tech data (four kinase substrates)</b>
+  <p>This foreground data set is adopted from the supplementary material of a previous study (Schwartz and Gygi, 2005), which contains 298 serine-phosphorylated peptides considering the following four kinds of kinases: Ataxia Telangiectasia Mutated (ATM, 43 peptides), Casein II (184 peptides), Calcium/Calmodulin-dependent protein Kinase II (CaMK II, 41 peptides), and Mitogen-Activated Protein Kinase (MAPK, 30 peptides).</p></li>
+  <li><b>Nature bio-tech data (synthetic peptides)</b>
+  <p>This foreground data set is adopted from the supplementary material of a previous study (Schwartz and Gygi, 2005), which contains 3000 synthetic peptides with 814 peptides having five specially designed synthetic motifs "XXXDXXSQXNXXX", "XXXXRXSXXLXXX", "XXXTVXSXEXXXX", "XXXXRXSXXPXXX", and "XXXXXKSXXXIXX".</p></li>
+  <li><b>PKA - ALL</b>
+  <p>The foreground data set considering all species with respect to PKA kinase substrates (306 serine-phosphorylated peptides)</p></li>
+  <li><b>PKC - ALL</b>
+  <p>The foreground data set considering all species with respect to PKC kinase substrates (297 serine-phosphorylated peptides)</p></li>
+  <li><b>CDK - ALL</b>
+  <p>The foreground data set considering all species with respect to CDK kinase substrates (209 serine-phosphorylated peptides)</p></li>
+  <li><b>CK2 - ALL</b>
+  <p>The foreground data set considering all species with respect to CK2 kinase substrates (241 serine-phosphorylated peptides)</p></li>
+  <li><b>4 kinases - ALL</b>
+  <p>The foreground data set considering all species with respect to PKA, PKC, CDK, and CK2 kinase substrates (998 serine-phosphorylated peptides)</p></li>
+  <li><b>PKA - Homo</b>
   <p>The foreground data set considering only human species with respect to PKA kinase substrates (187 serine-phosphorylated peptides)</p></li>
-  <li><b>FH<sub>PKC</sub></b>
-  <p>The foreground data set considering only human species with respect to PKC kinase substrates (210 serine-phosphorylated peptides)</p></li>
-  <li><b>FH<sub>CDK</sub></b>
+  <li><b>PKC - Homo</b>
+  <p>The foreground data set considering only human species with respect to PKC kinase substrates (209 serine-phosphorylated peptides)</p></li>
+  <li><b>CDK - Homo</b>
   <p>The foreground data set considering only human species with respect to CDK kinase substrates (155 serine-phosphorylated peptides)</p></li>
-  <li><b>FH<sub>CK2</sub></b>
+  <li><b>CK2 - Homo</b>
   <p>The foreground data set considering only human species with respect to CK2 kinase substrates (177 serine-phosphorylated peptides)</p></li>
-  <li><b>FH<sub>COMBINED</sub></b>
-  <p>The foreground data set considering only human species with respect to PKA, PKC, CDK, and CK2 kinase substrates (729 serine-phosphorylated peptides)</p></li>
-  <li><b>BH</b>
-  <p>Human background data set (249175 serine-phosphorylated and non-phosphorylated peptides)</p></li></ol>
+  <li><b>4 kinases - Homo</b>
+  <p>The foreground data set considering only human species with respect to PKA, PKC, CDK, and CK2 kinase substrates (697 serine-phosphorylated peptides)</p></li>
+  <li><b>Mouse mass spectrometry data</b>
+  <p>This foreground data set is adopted from the supplementary material of a previous study (Zanivan and et al., 2008), which is the mouse mass spectrometry data with 5174 mouse serine-phosphorylated sites under multiple TiO2 conditions.</p></li>
+</ol>
 </div>
 <div id="download" title="Download" align="left">
   <h3>Download Data Set:</h3>

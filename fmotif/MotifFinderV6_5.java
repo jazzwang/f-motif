@@ -488,21 +488,25 @@ public class MotifFinderV6_5 {
 		                	}*/
 
 		                }else if(GoodMotifSize <= 0 && clusterNum <= 1){
-//		                	System.out.println("Last Motif Match less than "+MinMatchNum+" sequences !");
+		                	System.out.println("Last bad Motif ");
 		                	flag = false;
-		                }	                
-		                else{
-		                	//System.out.println("Strongest Motif Match less than "+MinMatchNum+" sequences !");
-		                	if (BadMotifSize == (clusterNum - SmallclusterNum) ||  RemovedNum == 0){
-		                		UniformClusterFlag = true;
-		                	}
-
+		                }else {
+		                	//UniformClusterFlag = true;
+		                	if (BadMotifSize == (clusterNum - SmallclusterNum) ){
+		                		System.out.println("All large bad Motif ");
+			                	UniformClusterFlag = true;
+			                	//clusterNum = (int)(UsedSequenceSet.size()/Mvalue) ;//(int)Math.sqrt((UsedSequenceSet.size()));//
+			                }
 		                }
-		                if(RemovedNum == 0 && clusterNum <= 1){
-//		                	System.out.println("Last Motif Match less than "+MinMatchNum+" sequences !");
+		                if ( RemovedNum == 0 && SmallclusterNum <= 0  && GoodMotifSize > 0){
+		                	System.out.println("Zero moved");
 		                	UniformClusterFlag = true;
-		                }	
-
+		                	
+		                }
+		                if(RemovedNum <= 0 && clusterNum <= 1){
+		                	System.out.println("remove num "+RemovedNum+"cluster size "+clusterNum);
+		                	UniformClusterFlag = true;
+		                }
 
 
 	                }while(flag);

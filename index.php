@@ -163,7 +163,7 @@ if($id != "")
 </div>
 <div id="footer">
   <div id="footer_inner">
-    <p>4ColoursLover Theme by <a href="http://www.potamocheri.eu/blog" target="_blank">Edo Grandinetti</a>. Power by <a href="http://trac.nchc.org.tw/grid" target="_blank">Grid Technology Division, <a href="http://www.nchc.org.tw" target="_blank">NCHC</a>, <a href="http://www.narl.org.tw" target="_blank">NARL</a>, Taiwan.</p>
+    <p><a target='_blank' href='http://wordpress.org/extend/themes/4colourslover'>4ColoursLover</a> Theme by <a href="http://www.potamocheri.eu/blog" target="_blank">Edo Grandinetti</a>. Power by <a href="http://trac.nchc.org.tw/grid" target="_blank">Grid Technology Division, <a href="http://www.nchc.org.tw" target="_blank">NCHC</a>, <a href="http://www.narl.org.tw" target="_blank">NARL</a>, Taiwan.</p>
   </div>    
 </div>
 </body></html>

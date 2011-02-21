@@ -59,7 +59,7 @@ if($id != "")
 		<select id="sample" name="sample">
 		  <option></option>
 		  <option value="nbt1146-S6.txt">Nature bio-tech data (four kinase substrates)</option>
-		  <option value="nbt1146-S5_s2.txt">Nature bio-tech data (synthetic peptides)</option>
+		  <option value="nbt1146-S5.txt">Nature bio-tech data (synthetic peptides)</option>
 		  <option value="Seq_positive_ALL_CDK_S_13_phosphoELM_1208.txt">CDK - ALL</option>
 		  <option value="Seq_positive_ALL_CK2_S_13_phosphoELM_1208.txt">CK2 - ALL</option>
 		  <option value="Seq_positive_ALL_PKA_S_13_phosphoELM_1208.txt">PKA - ALL</option>
@@ -70,13 +70,14 @@ if($id != "")
 		  <option value="Seq_positive_Homo-sapiens_PKA_S_13_phosphoELM_1208.txt">PKA - Homo</option>
 		  <option value="Seq_positive_Homo-sapiens_PKC_S_13_phosphoELM_1208.txt">PKC - Homo</option>
 		  <option value="Seq_positive_Homo-sapiens_4-Kinases_S_13_phosphoELM_1208.txt">4 Kinases - Homo</option>
-		  <option value="pr800599n_11_S_N.txt">Mouse mass spectrometry data</option>
+		  <option value="pr800599n_11_S_N_hiP.txt">Mouse mass spectrometry data</option>
 		</select></td></tr>
 	      <tr id="uploads"><td>1.2 Upload a text file:  </td><td><input type="file" id="fgdata_file" name="fgdata_file" value=""/></td></tr>
 	      <tr><td><b> 2. Choose the Background Type:</b></td><td id="back_file">
 		<select id="background" name="background">
 		  <option value="ELM_1208_backgroundset_S_13.txt">All Species - S</option>
 		  <option value="ELM_1208_Homo-sapiens_backgroundset_S_13.txt">Human only - S</option>
+		  <option value="ELM_1208_Homo-sapiens_backgroundset_S_13_plus_S5.txt">Human only for synthetic data - S</option>
 		  <option value="ipi.MOUSE.v3.71.fasta_S_N_s.txt">Mouse</option>
 		</select></td></tr>
 	      <tr><td><b> 3. Choose an Encoding Method:</b></td><td id="encode_s">
@@ -132,7 +133,7 @@ if($id != "")
 <ol><li><b>Nature bio-tech data (four kinase substrates)</b>
   <p>This foreground data set is adopted from the supplementary material of a previous study (Schwartz and Gygi, 2005), which contains 298 serine-phosphorylated peptides considering the following four kinds of kinases: Ataxia Telangiectasia Mutated (ATM, 43 peptides), Casein II (184 peptides), Calcium/Calmodulin-dependent protein Kinase II (CaMK II, 41 peptides), and Mitogen-Activated Protein Kinase (MAPK, 30 peptides).</p></li>
   <li><b>Nature bio-tech data (synthetic peptides)</b>
-  <p>This foreground data set is adopted from the supplementary material of a previous study (Schwartz and Gygi, 2005), which contains 3000 synthetic peptides with 814 peptides having five specially designed synthetic motifs "XXXDXXSQXNXXX", "XXXXRXSXXLXXX", "XXXTVXSXEXXXX", "XXXXRXSXXPXXX", and "XXXXXKSXXXIXX".</p></li>
+  <p>This foreground data set is adopted from the supplementary material of a previous study (Schwartz and Gygi, 2005), which contains 9774 synthetic peptides with five specially designed synthetic motifs "XXXDXXSQXNXXX" (128 peptides), "XXXXRXSXXLXXX" (199 peptides), "XXXTVXSXEXXXX" (137 peptides), "XXXXRXSXXPXXX" (192 peptides), and "XXXXXKSXXXIXX" (160 peptides).</p></li>
   <li><b>PKA - ALL</b>
   <p>The foreground data set considering all species with respect to PKA kinase substrates (306 serine-phosphorylated peptides)</p></li>
   <li><b>PKC - ALL</b>
@@ -154,7 +155,7 @@ if($id != "")
   <li><b>4 kinases - Homo</b>
   <p>The foreground data set considering only human species with respect to PKA, PKC, CDK, and CK2 kinase substrates (697 serine-phosphorylated peptides)</p></li>
   <li><b>Mouse mass spectrometry data</b>
-  <p>This foreground data set is adopted from the supplementary material of a previous study (Zanivan and et al., 2008), which is the mouse mass spectrometry data with 5174 mouse serine-phosphorylated sites under multiple TiO2 conditions.</p></li>
+  <p>This foreground data set is adopted from the supplementary material of a previous study (Zanivan, et al., 2008), which is the mouse mass spectrometry data with 4189 mouse serine-phosphorylated sites considering phosphorylation probabilities &gt;= 0.8 under multiple TiO2 conditions.</p></li>
 </ol>
 </div>
 <div id="download" title="Download" align="left">

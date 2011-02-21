@@ -1,5 +1,5 @@
 var input;
-var var_m = 60;
+var var_m = 100;
 var var_g = 30;
 
 $(function() {
@@ -19,13 +19,17 @@ $(function() {
   // 設定 onChange Event 處理函式
   $('#fgdata_file').change(function () {
     $('#sample').val("");
-    val_m = 60;
+    val_m = 100;
     update_M();
   });
   $('#sample').change(function () {
     $('#fgdata_file').val("");
+    if($('#sample').val() == "nbt1146-S5.txt")
+      $('#background option:eq(2)').attr('selected','selected');
+    else
+      $('#background option:eq(0)').attr('selected','selected');
     if($('#sample').val() == "pr800599n_11_S_N.txt")
-      var_m = 60;
+      var_m = 100;
     else
       var_m = 20
     update_M();
@@ -328,7 +332,7 @@ function show_result(id)
 function update_M()
 {
   $("#match").empty();
-  for ( i=20; i<=60; i++)
+  for ( i=20; i<=100; i++)
   {
     if(i == var_m) {
       $("#match").append("<option value='"+i+"' selected>"+i+"</option>");

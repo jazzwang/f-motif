@@ -1,6 +1,6 @@
 var input;
 var var_m = 100;
-var var_g = 30;
+var var_g = 15;
 
 $(function() {
   // 使用 jQuery UI 的 Tab 元件
@@ -19,26 +19,32 @@ $(function() {
   // 設定 onChange Event 處理函式
   $('#fgdata_file').change(function () {
     $('#sample').val("");
-    val_m = 100;
+    var_m = 100;
     update_M();
   });
   $('#sample').change(function () {
     $('#fgdata_file').val("");
+    var_m = 20;
+    // 選擇 "Nature bio-tech data (synthetic peptides)" 前景時，
+    // 自動切換至 "Human only for synthetic data - S" 背景。
     if($('#sample').val() == "nbt1146-S5.txt")
       $('#background option:eq(2)').attr('selected','selected');
-    else
+    // 選擇 "Mouse mass spectrometry data" 前景時，
+    // 自動切換至 "Mouse" 背景
+    else if($('#sample').val() == "pr800599n_11_S_N_hiP.txt")
+    {
+      $('#background option:eq(3)').attr('selected','selected');
+    } else {
       $('#background option:eq(0)').attr('selected','selected');
-    if($('#sample').val() == "pr800599n_11_S_N.txt")
-      var_m = 100;
-    else
-      var_m = 20
+    }
     update_M();
   });
   $('#match').change(function () {
-    value = $('#match').val();
+    v_max = $('#match').val();
+    v_min = Math.round(v_max / 2); 
     $('#cluster').empty();
     $('#threshold').empty();
-    for ( j=15; j<=value; j++)
+    for ( j=v_min; j<=v_max; j++)
     {
       if( j == var_g ) {
 	$("#cluster").append("<option value='"+j+"' selected>"+j+"</option>");
@@ -332,7 +338,7 @@ function show_result(id)
 function update_M()
 {
   $("#match").empty();
-  for ( i=20; i<=100; i++)
+  for ( i=20; i<=100; i=i+10)
   {
     if(i == var_m) {
       $("#match").append("<option value='"+i+"' selected>"+i+"</option>");

@@ -19,6 +19,6 @@ clean:
 	@rm fmotif/*.class
 
 update:
-	@rm -f output_image/*
-	@rm -f output/*
+	@rm -f output_image/[0-9]*
+	@rm -f output/[0-9]*
 	@rm -f input/[0-9]*

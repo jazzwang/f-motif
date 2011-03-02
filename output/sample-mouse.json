@@ -1,0 +1,1 @@
+[{ 'input_file' : "110227232833.txt", 'background' : "ipi.MOUSE.v3.71.fasta_S_N_s.txt", 'encode' : "PCM", 'match' : "20", 'freq' : "50", 'cluster' : "15", 'flat' : "1", 'repeat' : "1", 'threshold' : "15", 'significance' : "0.000001", 'time' : "85181" }]

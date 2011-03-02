@@ -16,6 +16,10 @@ $(function() {
     autoOpen: false, bgiframe: true, modal: true, 
     buttons: { Ok: function() {	$(this).dialog('close'); } }
   });
+  $("#example").dialog({
+    autoOpen: false, bgiframe: true, modal: true, 
+    buttons: { Ok: function() {	$(this).dialog('close'); } }
+  });
   // 設定 onChange Event 處理函式
   $('#fgdata_file').change(function () {
     $('#sample').val("");
@@ -206,6 +210,11 @@ function show_annotation()
 function show_download()
 {
   $("#download").dialog("open");
+}
+
+function show_example()
+{
+  $("#example").dialog("open");
 }
 
 function IsNumeric(sText)

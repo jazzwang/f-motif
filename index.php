@@ -38,6 +38,7 @@ if($id != "")
 	<li class="page_item page-item-2"><a href="index.php">Home</a></li>
 	<li class="page_item page-item-2"><a href="#" onclick="show_annotation();" title="Annotation">Annotation</a></li>
 	<li class="page_item page-item-2"><a href="#" onclick="show_download();" title="Download">Download</a></li>
+	<li class="page_item page-item-2"><a href="#" onclick="show_example();" title="Example">Output Example</a></li>
       </ul>
     </div>
   </div>
@@ -161,6 +162,12 @@ if($id != "")
 <div id="download" title="Download" align="left">
   <h3>Download Data Set:</h3>
   <p> You can download the <a href='input/foregroundset.zip'>foreground</a> and <a href='input/backgroundset.zip'>background</a> data sets from this <a href='input/dataset.zip' target='_blank'><font color='blue'>"Data Set Archive"</font></a></p>
+</div>
+<div id="example" title="Example" align="left">
+  <h3>Output Example:</h3>
+  <table><tr><td>Forground</td><td>Background</td><td>Results</td></tr>
+  <tr><td>Mouse mass spectrometry data</td><td>Mouse</td><td><a href='/?id=sample-mouse'>Mouse Output Example</a></td></tr>
+  </table>
 </div>
 <div id="footer">
   <div id="footer_inner">

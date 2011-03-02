@@ -166,7 +166,7 @@ if($id != "")
 <div id="example" title="Example" align="left">
   <h3>Output Example:</h3>
   <table><tr><td>Forground</td><td>Background</td><td>Results</td></tr>
-  <tr><td>Mouse mass spectrometry data</td><td>Mouse</td><td><a href='/?id=sample-mouse'>Mouse Output Example</a></td></tr>
+  <tr><td>Mouse mass spectrometry data</td><td>Mouse</td><td><a href='<?=$_SERVER['PHP_SELF'];?>?id=sample-mouse'>Mouse Output Example</a></td></tr>
   </table>
 </div>
 <div id="footer">

@@ -8,8 +8,8 @@ $(function() {
   // 使用 jQuery UI 的 Dialog 元件
   $("#annotation").dialog({
     autoOpen: false, bgiframe: true, modal: true, 
-    maxHeight: 400, maxWidth: 1024,
-    height: 400, width: 1024,
+    maxHeight: 400, maxWidth: 800,
+    height: 400, width: 800,
     buttons: { Ok: function() {	$(this).dialog('close'); } }
   });
   $("#download").dialog({
@@ -18,6 +18,8 @@ $(function() {
   });
   $("#example").dialog({
     autoOpen: false, bgiframe: true, modal: true, 
+    maxHeight: 400, maxWidth: 800,
+    height: 400, width: 800,
     buttons: { Ok: function() {	$(this).dialog('close'); } }
   });
   // 設定 onChange Event 處理函式
@@ -156,7 +158,7 @@ function process(input)
   {
     $('#status').append("<li><b><font color='red'>Warning: it will take more than 1 hours if you choose 'BIN' encoding method! Please check the result using following URL, thanks.</font></b></li>");
   }
-  $('#status').append("<li><b>Use <u><a href='?id="+ input.replace('.txt','') +"'>this URL</a></u> to get history results.</b></li>");
+  $('#status').append("<li><font color='red'><b>Use <u><a href='?id="+ input.replace('.txt','') +"'>this URL</a></u> to get history results.</b></font></li>");
 
   $.ajax({
     url:          "php/motif.php",

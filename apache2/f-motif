@@ -1,0 +1,11 @@
+<VirtualHost 120.126.36.244:80>
+  ServerName  f-motif.classcloud.org
+  ErrorLog /var/log/f-motif-error_log
+  CustomLog /var/log/f-motif-access_log common
+  # Fallback for static html content
+  DocumentRoot "/var/www/f-motif"
+  <Directory "/var/www/f-motif">
+    Order deny,allow
+    Allow from all
+  </Directory>
+</VirtualHost>

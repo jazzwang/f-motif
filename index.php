@@ -164,8 +164,8 @@ if($id != "")
   <p> You can download the <a href='input/foregroundset.zip'>foreground</a> and <a href='input/backgroundset.zip'>background</a> data sets from this <a href='input/dataset.zip' target='_blank'><font color='blue'>"Data Set Archive"</font></a></p>
 </div>
 <div id="example" title="Example" align="left">
-  <h3>Output Example:</h3>
-  <table id="examples"><tr><th>Forground</th><th>Background</th><th>Results</th></tr>
+  <h3>Output Example:</h3><p/><p/>
+  <table id="examples" border='1' border-color='black' cellpadding='5' width='780'><tr><th>Forground</th><th>Background</th><th>Results</th></tr>
   <tr><td>Mouse mass spectrometry data</td><td>Mouse</td><td><a href='<?=$_SERVER['PHP_SELF'];?>?id=sample-mouse'>Mouse Output Example</a></td></tr>
   <tr><td>Nature bio-tech data (synthetic peptides)</td><td>Human only for synthetic data - S</td><td><a href='<?=$_SERVER['PHP_SELF'];?>?id=sample-synthetic'>Synthetic Output Example</a></td></tr>
   </table>

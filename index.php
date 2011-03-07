@@ -87,7 +87,7 @@ if($id != "")
 		  <option value="PWM">PWM</option>
 		  <option value="BIN">BIN</option>
 		</select></td></tr>
--             <tr><td><b> 4. Number of Iterations (1~100):</b></td>
+             <tr><td><b> 4. Number of Iterations (1~100):</b></td>
 		  <td id="freq_s"><input id="freq" name="freq" value="50"/></td>
 	      </tr>
 	      <tr><td><b> 5. Choose <i>M</i> for Identifying Motifs:</b></td><td id="match_s">
@@ -165,8 +165,9 @@ if($id != "")
 </div>
 <div id="example" title="Example" align="left">
   <h3>Output Example:</h3>
-  <table><tr><td>Forground</td><td>Background</td><td>Results</td></tr>
+  <table id="examples"><tr><th>Forground</th><th>Background</th><th>Results</th></tr>
   <tr><td>Mouse mass spectrometry data</td><td>Mouse</td><td><a href='<?=$_SERVER['PHP_SELF'];?>?id=sample-mouse'>Mouse Output Example</a></td></tr>
+  <tr><td>Nature bio-tech data (synthetic peptides)</td><td>Human only for synthetic data - S</td><td><a href='<?=$_SERVER['PHP_SELF'];?>?id=sample-synthetic'>Synthetic Output Example</a></td></tr>
   </table>
 </div>
 <div id="footer">

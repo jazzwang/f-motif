@@ -1,0 +1,1 @@
+[{ 'input_file' : "110302163821.txt", 'background' : "ELM_1208_Homo-sapiens_backgroundset_S_13_plus_S5.txt", 'encode' : "PCM", 'match' : "20", 'freq' : "50", 'cluster' : "15", 'flat' : "1", 'repeat' : "1", 'threshold' : "15", 'significance' : "0.000001", 'time' : "138295" }]

@@ -7,3 +7,6 @@
 #total-motif th { background-color: #E6E6FF; padding: 5px; vertical-align: vertical-align; }
 #total-motif tr.even td { background-color: #E6E6FF; padding: 5px; }
 #total-motif tr.odd  td { background-color: #F4F7FB; padding: 5px; }
+#examples th { background-color: #E6E6FF; padding: 5px; vertical-align: vertical-align; }
+#examples tr.even td { background-color: #E6E6FF; padding: 5px; }
+#examples tr.odd  td { background-color: #F4F7FB; padding: 5px; }

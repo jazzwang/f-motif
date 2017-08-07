@@ -1,4 +1,4 @@
-<?
+<?php
   $path  = str_replace("/php","",getcwd());
   $input  = $path . "/input/" . $_POST["input"];
   $output = $path . "/output_image/" . str_replace(".txt","",$_POST["input"]);

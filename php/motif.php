@@ -1,4 +1,4 @@
-<?
+<?php
   $input	= str_replace(".txt","",$_POST["input"]);
   $background	= $_POST["background"];
   $encode	= $_POST["encode"];

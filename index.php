@@ -18,7 +18,7 @@
   <script type="text/javascript" language="javascript" src="js/jquery.ajaxfileupload.js"></script>
   <script type="text/javascript" language="javascript" src="js/f-motif.js"></script>
 </head>
-<?
+<?php
 $id=$_GET['id'];
 if($id != "")
 {

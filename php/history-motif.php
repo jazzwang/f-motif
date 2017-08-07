@@ -1,4 +1,4 @@
-<?
+<?php
   /*
    * 2009-08-19 modified from motif-table.php
    */

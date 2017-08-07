@@ -23,7 +23,7 @@ root@f-motif:/# cd
 ```
 root@f-motif:~# apt-get update                            
 root@f-motif:~# apt-get -y install apache2 libapache2-mod-php5 make ghostscript openjdk-7-jdk wget locales git
-root@f-motif:~# echo "zh_TW.UTF-8 UTF-8" > /etc/locale.gen
+root@f-motif:~# echo "zh_TW.UTF-8 UTF-8" >> /etc/locale.gen
 root@f-motif:~# locale-gen zh_TW.UTF-8
 root@f-motif:~# export LC_ALL=zh_TW.UTF-8
 root@f-motif:~# cd /var/www/html/
